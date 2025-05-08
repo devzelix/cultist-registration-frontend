@@ -20,7 +20,7 @@ export default function Input({
   return (
     <>
       <div className={`${width} flex flex-col gap-y-2`}>
-        <label htmlFor={id} className="text-black font-bold">
+        <label htmlFor={id} className="text-white font-bold">
           {label}
         </label>
         <div className="flex flex-col gap-y-0.5">
@@ -29,9 +29,9 @@ export default function Input({
             placeholder={placeholder}
             id={id}
             name={name}
-            className="pt-2 pb-2 pl-2.5 border-2 rounded-[10px] border-black bg-white focus:outline-2 focus:outline-[#234997] focus:border-[#234997]"
+            className="h-11 pt-2 pb-2 pl-2.5 border-2 rounded-[10px] border-[#f3f3f3] bg-white focus:outline-2 focus:outline-[#fc5e03] focus:border-[#fc5e03]"
           />
-          <p className="text-red-600" hidden>
+          <p className="pl-1 font-bold text-red-600 hidden">
             Esto es un error! ! !
           </p>
         </div>

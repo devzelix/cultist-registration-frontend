@@ -1,4 +1,3 @@
-import "./select.css";
 import type { Option } from "../../utils/interfaces";
 
 interface SelectProps {
@@ -21,14 +20,14 @@ export default function Select({
   return (
     <>
       <div className={`${width} flex flex-col gap-y-2`}>
-        <label htmlFor={id} className="text-black font-bold">
+        <label htmlFor={id} className="text-[#f3f3f3] font-bold">
           {label}
         </label>
         <div className="flex flex-col gap-y-0.5">
           <select
             name={name}
             id={id}
-            className="pt-2 pb-2 pl-2.5 border-[2px] rounded-[10px] border-black bg-white text-gray-400 focus:outline-2 focus:outline-[#234997] focus:border-[#234997]"
+            className="h-11 pt-2 pb-2 pl-2.5 border-[2px] rounded-[10px] border-[#f3f3f3] bg-white text-gray-400 focus:outline-2 focus:outline-[#fc5e03] focus:border-[#fc5e03]"
           >
             <option value="" className="text-gray-400">
               {defaultOption}

@@ -35,11 +35,17 @@ export default function Input({
             placeholder={
               type === "text" || type === "email" ? placeholder : undefined
             }
-            min={type === "date" ? min : undefined}
-            max={type === "date" ? max : undefined}
+            min={type === "date" || type === "number" ? min : undefined}
+            max={type === "date" || type === "number" ? max : undefined}
             id={id}
             name={name}
-            defaultValue={type === "date" ? max : undefined}
+            defaultValue={
+              type === "date" || type === "number"
+                ? type === "date"
+                  ? max
+                  : min
+                : undefined
+            }
             className="h-11 pt-2 pb-2 pl-2.5 w-full border-2 rounded-xl font-inter font-normal border-input bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:color-placeholder"
             aria-describedby={`${id}Error`}
           />

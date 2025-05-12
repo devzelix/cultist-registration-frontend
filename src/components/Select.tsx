@@ -25,13 +25,14 @@ export default function Select({
         <label htmlFor={id} className="font-inter font-medium text-text">
           {label}
         </label>
-        <div className="flex flex-col gap-y-0.5">
+        <div className="relative flex flex-col gap-y-0.5">
           <select
             name={name}
             id={id}
             className="h-11 pt-2 pb-2 pl-2.5 border-2 rounded-xl border-input font-inter font-normal text-placeholder bg-input focus:outline-2 focus:outline-secondary focus:border-secondary"
+            defaultValue=""
           >
-            <option value="" className="text-placeholder" disabled selected>
+            <option value="" className="text-placeholder" disabled>
               {defaultOption}
             </option>
             {options.map((option) => (

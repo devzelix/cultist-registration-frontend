@@ -5,7 +5,6 @@ import web from "../assets/images/web-icon.webp";
 
 export default function App() {
   return (
-    // bg-[url(/src/assets/images/background-mobile.webp)] bg-contain
     <>
       <main className="w-full pt-7 pr-1 pb-10 pl-1 flex items-center justify-center bg-primary md:pt-22 md:pb-23">
         <Form />

@@ -1,8 +1,8 @@
 import { type Option } from "./interfaces";
 
 export const nationalityOptions: Option[] = [
-  { key: 1, value: "v", option: "V" },
-  { key: 2, value: "e", option: "E" },
+  { key: 1, value: "V", option: "V" },
+  { key: 2, value: "E", option: "E" },
 ];
 
 export const phonePrefixOptions: Option[] = [
@@ -14,81 +14,101 @@ export const phonePrefixOptions: Option[] = [
 ];
 
 export const municipalityOptions: Option[] = [
-  { key: 1, value: "bejuma", option: "Bejuma" },
-  { key: 2, value: "carlos arvelo", option: "Carlos Arvelo" },
-  { key: 3, value: "diego ibarra", option: "Diego Ibarra" },
-  { key: 4, value: "guacara", option: "Guacara" },
-  { key: 5, value: "juan josé mora", option: "Juan José Mora" },
-  { key: 6, value: "libertador", option: "Libertador" },
-  { key: 7, value: "los guayos", option: "Los Guayos" },
-  { key: 8, value: "miranda", option: "Miranda" },
-  { key: 9, value: "montalbán", option: "Montalbán" },
-  { key: 10, value: "naguanagua", option: "Naguanagua" },
-  { key: 11, value: "puerto cabello", option: "Puerto Cabello" },
-  { key: 12, value: "san diego", option: "San Diego" },
-  { key: 13, value: "san joaquín", option: "San Joaquín" },
-  { key: 14, value: "valencia", option: "Valencia" },
+  { key: 1, value: "1", option: "Bejuma" },
+  { key: 2, value: "2", option: "Carlos Arvelo" },
+  { key: 3, value: "3", option: "Diego Ibarra" },
+  { key: 4, value: "4", option: "Guacara" },
+  { key: 5, value: "5", option: "Juan José Mora" },
+  { key: 6, value: "6", option: "Libertador" },
+  { key: 7, value: "7", option: "Los Guayos" },
+  { key: 8, value: "8", option: "Miranda" },
+  { key: 9, value: "9", option: "Montalbán" },
+  { key: 10, value: "10", option: "Naguanagua" },
+  { key: 11, value: "11", option: "Puerto Cabello" },
+  { key: 12, value: "12", option: "San Diego" },
+  { key: 13, value: "13", option: "San Joaquín" },
+  { key: 14, value: "14", option: "Valencia" },
 ];
 
 export const parishOptions: Record<string, Option[]> = {
-  bejuma: [
-    { key: 1, value: "bejuma", option: "Bejuma" },
-    { key: 2, value: "canoabo", option: "Canoabo" },
-    { key: 3, value: "simón bolívar", option: "Simón Bolívar" },
+  1: [
+    { key: 1, value: "1", option: "Bejuma" },
+    { key: 2, value: "2", option: "Canoabo" },
+    { key: 3, value: "3", option: "Simón Bolívar" },
   ],
-  "carlos arvelo": [
-    { key: 1, value: "belén", option: "Belén" },
-    { key: 2, value: "güigüe", option: "Güigüe" },
-    { key: 3, value: "tacarigua", option: "Tacarigua" },
+  2: [
+    { key: 1, value: "4", option: "Belén" },
+    { key: 2, value: "5", option: "Güigüe" },
+    { key: 3, value: "6", option: "Tacarigua" },
   ],
-  "diego ibarra": [
-    { key: 1, value: "aguas calientes", option: "Aguas Calientes" },
-    { key: 2, value: "mariara", option: "Mariara" },
+  3: [
+    { key: 1, value: "7", option: "Aguas Calientes" },
+    { key: 2, value: "8", option: "Mariara" },
   ],
-  guacara: [
-    { key: 1, value: "ciudad alianza", option: "Ciudad Alianza" },
-    { key: 2, value: "guacara", option: "Guacara" },
-    { key: 3, value: "yagua", option: "Yagua" },
+  4: [
+    { key: 1, value: "9", option: "Ciudad Alianza" },
+    { key: 2, value: "10", option: "Guacara" },
+    { key: 3, value: "11", option: "Yagua" },
   ],
-  "juan josé mora": [
-    { key: 1, value: "morón", option: "Morón" },
-    { key: 2, value: "urama", option: "Urama" },
+  5: [
+    { key: 1, value: "12", option: "Morón" },
+    { key: 2, value: "13", option: "Urama" },
   ],
-  libertador: [
-    { key: 1, value: "independencia", option: "Independencia" },
-    { key: 2, value: "tocuyito", option: "Tocuyito" },
+  6: [
+    { key: 1, value: "14", option: "Independencia" },
+    { key: 2, value: "15", option: "Tocuyito" },
   ],
-  "los guayos": [{ key: 1, value: "los guayos", option: "Los Guayos" }],
-  miranda: [{ key: 1, value: "miranda", option: "Miranda" }],
-  montalbán: [{ key: 1, value: "montalbán", option: "Montalbán" }],
-  naguanagua: [{ key: 1, value: "naguanagua", option: "Naguanagua" }],
-  "puerto cabello": [
-    { key: 1, value: "bartolomé salom", option: "Bartolomé Salom" },
-    { key: 2, value: "borburata", option: "Borburata" },
-    { key: 3, value: "democracia", option: "Democracia" },
-    { key: 4, value: "fraternidad", option: "Fraternidad" },
-    { key: 5, value: "goaigoaza", option: "Goaigoaza" },
-    { key: 6, value: "juan josé flores", option: "Juan José Flores" },
-    { key: 7, value: "Patanemo", option: "Patanemo" },
-    { key: 8, value: "unión", option: "Unión" },
+  7: [{ key: 1, value: "16", option: "Los Guayos" }],
+  8: [{ key: 1, value: "17", option: "Miranda" }],
+  9: [{ key: 1, value: "18", option: "Montalbán" }],
+  10: [{ key: 1, value: "19", option: "Naguanagua" }],
+  11: [
+    { key: 1, value: "20", option: "Bartolomé Salom" },
+    { key: 2, value: "21", option: "Borburata" },
+    { key: 3, value: "22", option: "Democracia" },
+    { key: 4, value: "23", option: "Fraternidad" },
+    { key: 5, value: "24", option: "Goaigoaza" },
+    { key: 6, value: "25", option: "Juan José Flores" },
+    { key: 7, value: "26", option: "Patanemo" },
+    { key: 8, value: "27", option: "Unión" },
   ],
-  "san diego": [{ key: 1, value: "san diego", option: "San Diego" }],
-  "san joaquín": [{ key: 1, value: "san joaquín", option: "San Joaquín" }],
-  valencia: [
-    { key: 1, value: "candelaria", option: "Candelaria" },
-    { key: 2, value: "catedral", option: "Catedral" },
-    { key: 3, value: "el socorro", option: "El Socorro" },
-    { key: 4, value: "miguel peña", option: "Miguel Peña" },
-    { key: 5, value: "negro primero", option: "Negro Primero" },
-    { key: 6, value: "rafael urdaneta", option: "Rafael Urdaneta" },
-    { key: 7, value: "san blas", option: "San Blas" },
-    { key: 8, value: "san josé", option: "San José" },
-    { key: 9, value: "santa rosa", option: "Santa Rosa" },
+  12: [{ key: 1, value: "28", option: "San Diego" }],
+  13: [{ key: 1, value: "29", option: "San Joaquín" }],
+  14: [
+    { key: 1, value: "30", option: "Candelaria" },
+    { key: 2, value: "31", option: "Catedral" },
+    { key: 3, value: "32", option: "El Socorro" },
+    { key: 4, value: "33", option: "Miguel Peña" },
+    { key: 5, value: "34", option: "Negro Primero" },
+    { key: 6, value: "35", option: "Rafael Urdaneta" },
+    { key: 7, value: "36", option: "San Blas" },
+    { key: 8, value: "37", option: "San José" },
+    { key: 9, value: "38", option: "Santa Rosa" },
   ],
 };
 
-export const artDisciplinesOptions: Option[] = [
-  { key: 1, value: "musico", option: "Musico" },
-  { key: 2, value: "pintor", option: "Pintor" },
-  { key: 3, value: "escritor", option: "Escritor" },
+export const artCategoriesOptions: Option[] = [
+  { key: 1, value: "1", option: "Artesanía" },
+  { key: 2, value: "2", option: "Artes Escénicas" },
+  { key: 3, value: "3", option: "Artes Plásticas y Visuales" },
+  { key: 4, value: "4", option: "Cine y Audiovisuales" },
+  { key: 5, value: "5", option: "Danza" },
+  { key: 6, value: "6", option: "Gestión Cultural" },
+  { key: 7, value: "7", option: "Literatura" },
+  { key: 8, value: "8", option: "Música" },
 ];
+
+export const artDisciplinesOptions: Record<string, Option[]> = {
+  1: [
+    { key: 1, value: "1", option: "Arte utilitario" },
+    { key: 1, value: "2", option: "Cerámica" },
+    { key: 1, value: "3", option: "Cuero y talabartería" },
+    { key: 1, value: "4", option: "Cestería" },
+    { key: 1, value: "5", option: "Joyería artesanal" },
+    { key: 1, value: "6", option: "Muñequería" },
+    { key: 1, value: "7", option: "Reciclaje artístico" },
+    { key: 1, value: "8", option: "Talla en madera" },
+    { key: 1, value: "9", option: "Tejido y bordado" },
+  ],
+  2: [{ key: 1, value: "", option: "" }],
+};

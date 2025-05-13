@@ -9,6 +9,8 @@ interface InputProps {
   width: string;
   icon?: string;
   error?: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function Input({
@@ -22,6 +24,8 @@ export default function Input({
   width,
   icon,
   error,
+  value,
+  onChange,
 }: InputProps) {
   return (
     <>
@@ -39,27 +43,24 @@ export default function Input({
             max={type === "date" || type === "number" ? max : undefined}
             id={id}
             name={name}
-            defaultValue={
-              type === "date" || type === "number"
-                ? type === "date"
-                  ? max
-                  : min
-                : undefined
-            }
-            className="h-11 pt-2 pb-2 pl-2.5 w-full border-2 rounded-xl font-inter font-normal border-input bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:color-placeholder"
+            className={`h-11 pt-2 ${
+              type === "date" || type === "number" ? "pr-2.5" : "pr-9"
+            } pb-2 pl-2.5 w-full border-2 rounded-xl font-inter font-normal text-tertiary border-input bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:color-placeholder`}
             aria-describedby={`${id}Error`}
+            value={value}
+            onChange={onChange}
           />
           {icon && (
             <img
               src={icon}
               alt=""
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 size-5"
             />
           )}
 
           {error && (
             <p
-              id={`${id}Error`}
+              id={`${id}-error`}
               className="absolute -bottom-6 left-1 font-inter text-sm font-medium text-error hidden"
             >
               {error}

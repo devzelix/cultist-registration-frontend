@@ -1,6 +1,7 @@
+import type { ChangeEvent } from "react";
 import type { Option } from "../utils/interfaces";
 
-interface InputPhoneProps {
+interface IdentityInputProps {
   idSelect: string;
   nameSelect: string;
   idInput: string;
@@ -12,6 +13,9 @@ interface InputPhoneProps {
   width: string;
   icon: string;
   error: string;
+  valueSelect: string;
+  valueInput: string;
+  onChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
 export default function IdentityInput({
@@ -26,7 +30,10 @@ export default function IdentityInput({
   width,
   icon,
   error,
-}: InputPhoneProps) {
+  valueSelect,
+  valueInput,
+  onChange,
+}: IdentityInputProps) {
   return (
     <>
       <div className={`${width} flex flex-col gap-y-2`}>
@@ -39,6 +46,8 @@ export default function IdentityInput({
             id={idSelect}
             className="w-1/4 h-11 pt-2 pb-2 pl-2.5 border-2 border-input rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary"
             aria-label={labelSelect}
+            value={valueSelect}
+            onChange={onChange}
           >
             {options.map((option) => (
               <option key={option.key} value={option.value}>
@@ -52,8 +61,10 @@ export default function IdentityInput({
               name={nameInput}
               id={idInput}
               placeholder={placeholder}
-              className="w-full h-11 pt-2 pb-2 pl-2.5 border-2 border-input rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:color-placeholder"
+              className="w-full h-11 pt-2 pr-9 pb-2 pl-2.5 border-2 border-input rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:text-placeholder"
               aria-describedby={`${idInput}Error`}
+              value={valueInput}
+              onChange={onChange}
             />
             {icon !== "" && (
               <img

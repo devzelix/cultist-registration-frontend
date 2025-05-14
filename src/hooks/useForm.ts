@@ -8,14 +8,14 @@ import useRestartConditionalInput from "./useRestartConditionalInput";
 export default function useForm() {
   const [formValues, setFormValues] = useState<FormValues>(initialFormValues);
 
-  const availablesParishes = useDependentOptions(
+  const availableParishes = useDependentOptions(
     parishOptions,
     formValues.municipalityId,
     setFormValues,
     "parishId"
   );
 
-  const availablesArtDisciplines = useDependentOptions(
+  const availableArtDisciplines = useDependentOptions(
     artDisciplinesOptions,
     formValues.artCategoryId,
     setFormValues,
@@ -30,11 +30,11 @@ export default function useForm() {
 
   useRestartConditionalInput(formValues.hasIllness, setFormValues, "illness");
 
-  const handleChange = (
+  const handleChange = <K extends keyof FormValues>(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    const key = name as keyof FormValues;
+    const key = name as K;
     setFormValues((prevState) => ({
       ...prevState,
       [key]: value,
@@ -43,8 +43,8 @@ export default function useForm() {
 
   return {
     formValues,
-    availablesParishes,
-    availablesArtDisciplines,
+    availableParishes,
+    availableArtDisciplines,
     handleChange,
   };
 }

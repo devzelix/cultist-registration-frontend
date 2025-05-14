@@ -1,37 +1,42 @@
+/* Importing the TailwindCSS styles */
 @import "tailwindcss";
 
+/* Defining the 'Playfair Display' font-face for bold text (700 weight) */
 @font-face {
-  font-family: "Playfair Display";
-  src: url("/fonts/PlayfairDisplay-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+  font-family: "Playfair Display"; /* Font family name */
+  src: url("/fonts/PlayfairDisplay-Bold.woff2") format("woff2"); /* Path to the font file */
+  font-weight: 700; /* Bold font weight */
+  font-style: normal; /* Normal font style */
+  font-display: swap; /* Ensures text is visible during font loading */
 }
 
+/* Defining the 'Inter' font-face for medium text (500 weight) */
 @font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+  font-family: "Inter"; /* Font family name */
+  src: url("/fonts/Inter-Medium.woff2") format("woff2"); /* Path to the font file */
+  font-weight: 500; /* Medium font weight */
+  font-style: normal; /* Normal font style */
+  font-display: swap; /* Ensures text is visible during font loading */
 }
 
+/* Defining the 'Inter' font-face for regular text (400 weight) */
 @font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-Medium.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+  font-family: "Inter"; /* Font family name */
+  src: url("/fonts/Inter-Medium.woff2") format("woff2"); /* Path to the font file */
+  font-weight: 400; /* Regular font weight */
+  font-style: normal; /* Normal font style */
+  font-display: swap; /* Ensures text is visible during font loading */
 }
 
+/* Defining the custom theme variables for fonts and colors */
 @theme {
-  --font-playfair: "Playfair Display", "serif";
-  --font-inter: "Inter", "sans-serif";
-  --color-primary: #1a2a83;
-  --color-secondary: #fc5e03;
-  --color-tertiary: #0e0e0e;
-  --color-text: #f3f3f3;
-  --color-placeholder: #636363;
-  --color-input: #f9f9f9;
-  --color-error: #ff002b;
+  --font-playfair: "Playfair Display", "serif"; /* Custom variable for Playfair font */
+  --font-inter: "Inter", "sans-serif"; /* Custom variable for Inter font */
+  --color-primary: #1a2a83; /* Primary color for the theme */
+  --color-secondary: #fc5e03; /* Secondary color for the theme */
+  --color-tertiary: #0e0e0e; /* Tertiary color for the theme */
+  --color-text: #f3f3f3; /* Text color for the theme */
+  --color-placeholder: #636363; /* Placeholder color for input fields */
+  --color-input: #f9f9f9; /* Background color for input fields */
+  --color-error: #ff002b; /* Error color for form validation or alerts */
 }

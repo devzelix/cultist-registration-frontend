@@ -23,11 +23,11 @@ import disabilityTypeInputIcon from "../assets/images/disabilityTypeInputIcon.we
 import illnessDetailsInputIcon from "../assets/images/illnessDetailsInputIcon.webp";
 import sendButtonIcon from "../assets/images/sendButtonIcon.webp";
 
-export default function Form() {
+export default function CultorForm() {
   const {
     formValues,
-    availablesParishes,
-    availablesArtDisciplines,
+    availableParishes,
+    availableArtDisciplines,
     handleChange,
   } = useForm();
 
@@ -149,8 +149,8 @@ export default function Form() {
             name="parishId"
             label="Parroquia"
             defaultOption="Seleccione su parroquia..."
-            options={availablesParishes}
-            disabled={availablesParishes.length === 0}
+            options={availableParishes}
+            disabled={availableParishes.length === 0}
             width="w-full md:w-[45%]"
             error="¡ Seleccione su parroquia !"
             value={formValues.parishId}
@@ -184,8 +184,8 @@ export default function Form() {
             name="artDisciplineId"
             label="Disciplina Artística"
             defaultOption="Seleccione su disciplina..."
-            options={availablesArtDisciplines}
-            disabled={availablesArtDisciplines.length === 0}
+            options={availableArtDisciplines}
+            disabled={availableArtDisciplines.length === 0}
             width="w-full md:w-[45%]"
             error="¡ Seleccione su disciplina !"
             value={formValues.artDisciplineId}

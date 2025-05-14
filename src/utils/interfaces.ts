@@ -31,3 +31,21 @@ export interface FormValues {
   hasIllness: string; // Indicates if the user has an illness.
   illness: string; // Illness details (if applicable).
 }
+
+export interface FormErrors {
+  firstNameError: string;
+  lastNameError: string;
+  idNumberError: string;
+  birthDateError: string;
+  phoneNumberError: string;
+  emailError: string;
+  instagramUserError: string;
+  municipalityIdError: string;
+  parishIdError: string;
+  homeAddressError: string;
+  artCategoryIdError: string;
+  artDisciplineIdError: string;
+  yearsOfExperienceError: string;
+  disabilityError: string;
+  illnessError: string;
+}

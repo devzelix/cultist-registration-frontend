@@ -1,3 +1,5 @@
+import type { ChangeEvent, FocusEvent } from "react";
+
 interface InputProps {
   type: string;
   placeholder?: string;
@@ -10,7 +12,9 @@ interface InputProps {
   icon?: string;
   error?: string;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onBlur: (e: FocusEvent<HTMLInputElement>) => void;
+  onFocus: (e: FocusEvent<HTMLInputElement>) => void;
 }
 
 export default function Input({
@@ -26,6 +30,8 @@ export default function Input({
   error,
   value,
   onChange,
+  onBlur,
+  onFocus,
 }: InputProps) {
   return (
     <>
@@ -45,10 +51,15 @@ export default function Input({
             name={name}
             className={`h-11 pt-2 ${
               type === "date" || type === "number" ? "pr-2.5" : "pr-9"
-            } pb-2 pl-2.5 w-full border-2 rounded-xl font-inter font-normal text-tertiary border-input bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:color-placeholder`}
-            aria-describedby={`${id}Error`}
+            } pb-2 pl-2.5 w-full border-2 rounded-xl font-inter font-normal text-tertiary ${
+              error !== ""
+                ? "outline-2 outline-error border-error"
+                : "border-input"
+            } bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:color-placeholder`}
             value={value}
             onChange={onChange}
+            onBlur={onBlur}
+            onFocus={onFocus}
           />
           {icon && (
             <img
@@ -60,8 +71,8 @@ export default function Input({
 
           {error && (
             <p
-              id={`${id}-error`}
-              className="absolute -bottom-6 left-1 font-inter text-sm font-medium text-error hidden"
+              id={`${id}Error`}
+              className="absolute -bottom-6 left-1 font-inter text-sm font-medium text-error"
             >
               {error}
             </p>

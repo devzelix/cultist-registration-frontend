@@ -1,4 +1,4 @@
-import type { ChangeEvent } from "react";
+import type { ChangeEvent, FocusEvent } from "react";
 
 interface ConditionalInputProps {
   width: string;
@@ -13,6 +13,8 @@ interface ConditionalInputProps {
   groupValue: string;
   inputValue: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onBlur: (e: FocusEvent<HTMLInputElement>) => void;
+  onFocus: (e: FocusEvent<HTMLInputElement>) => void;
 }
 
 export default function ConditionalInput({
@@ -28,6 +30,8 @@ export default function ConditionalInput({
   groupValue,
   inputValue,
   onChange,
+  onBlur,
+  onFocus,
 }: ConditionalInputProps) {
   return (
     <>
@@ -76,10 +80,16 @@ export default function ConditionalInput({
               placeholder={placeholder}
               id={idInput}
               name={nameInput}
-              className="w-full h-11 pt-2 pr-9 pb-2 pl-2.5 border-2 border-input rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:text-placeholder"
+              className={`w-full h-11 pt-2 pr-9 pb-2 pl-2.5 border-2 ${
+                error !== ""
+                  ? "outline-2 outline-error border-error"
+                  : "border-input"
+              } rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:text-placeholder`}
               disabled={disabled}
               value={inputValue}
               onChange={onChange}
+              onBlur={onBlur}
+              onFocus={onFocus}
             />
             <img
               src={icon}
@@ -87,8 +97,8 @@ export default function ConditionalInput({
               className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
             />
             <p
-              id={`${idInput}-error`}
-              className="absolute -bottom-5 left-1 font-inter font-medium text-sm text-error hidden"
+              id={`${idInput}Error`}
+              className="absolute -bottom-5 left-1 font-inter font-medium text-sm text-error"
             >
               {error}
             </p>

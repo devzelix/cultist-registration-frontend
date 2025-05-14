@@ -1,5 +1,5 @@
 import { getMaxBirthDate } from "./birthDateRange";
-import type { FormValues } from "./interfaces";
+import type { FormErrors, FormValues } from "./interfaces";
 
 /**
  * Initial values for the form fields, providing default values to ensure form completeness.
@@ -27,4 +27,22 @@ export const initialFormValues: FormValues = {
   disability: "", // Default to empty string for disability details.
   hasIllness: "no", // Default to "no" for illness status.
   illness: "", // Default to empty string for illness details.
+};
+
+export const initialFormErrors: FormErrors = {
+  firstNameError: "",
+  lastNameError: "",
+  idNumberError: "",
+  birthDateError: "",
+  phoneNumberError: "",
+  emailError: "",
+  instagramUserError: "",
+  municipalityIdError: "",
+  parishIdError: "",
+  homeAddressError: "",
+  artCategoryIdError: "",
+  artDisciplineIdError: "",
+  yearsOfExperienceError: "",
+  disabilityError: "",
+  illnessError: "",
 };

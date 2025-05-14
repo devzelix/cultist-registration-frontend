@@ -1,4 +1,4 @@
-import type { ChangeEvent } from "react";
+import type { ChangeEvent, FocusEvent } from "react";
 import type { Option } from "../utils/interfaces";
 
 interface IdentityInputProps {
@@ -16,6 +16,8 @@ interface IdentityInputProps {
   valueSelect: string;
   valueInput: string;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  onBlur: (e: FocusEvent<HTMLInputElement>) => void;
+  onFocus: (e: FocusEvent<HTMLInputElement>) => void;
 }
 
 export default function IdentityInput({
@@ -33,6 +35,8 @@ export default function IdentityInput({
   valueSelect,
   valueInput,
   onChange,
+  onBlur,
+  onFocus,
 }: IdentityInputProps) {
   return (
     <>
@@ -61,10 +65,16 @@ export default function IdentityInput({
               name={nameInput}
               id={idInput}
               placeholder={placeholder}
-              className="w-full h-11 pt-2 pr-9 pb-2 pl-2.5 border-2 border-input rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:text-placeholder"
+              className={`w-full h-11 pt-2 pr-9 pb-2 pl-2.5 border-2 ${
+                error !== ""
+                  ? "outline-2 outline-error border-error"
+                  : "border-input"
+              } rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:text-placeholder`}
               aria-describedby={`${idInput}Error`}
               value={valueInput}
               onChange={onChange}
+              onBlur={onBlur}
+              onFocus={onFocus}
             />
             {icon !== "" && (
               <img
@@ -75,7 +85,7 @@ export default function IdentityInput({
             )}
             <p
               id={`${idInput}Error`}
-              className="absolute -bottom-6 left-1 font-inter font-medium text-sm text-error hidden"
+              className="absolute -bottom-6 left-1 font-inter font-medium text-sm text-error"
             >
               {error}
             </p>

@@ -1,4 +1,4 @@
-import type { ChangeEvent } from "react";
+import type { ChangeEvent, FocusEvent } from "react";
 import type { Option } from "../utils/interfaces";
 
 interface SelectProps {
@@ -12,6 +12,8 @@ interface SelectProps {
   error: string;
   value: string;
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+  onBlur: (e: FocusEvent<HTMLSelectElement>) => void;
+  onFocus: (e: FocusEvent<HTMLSelectElement>) => void;
 }
 
 export default function Select({
@@ -25,6 +27,8 @@ export default function Select({
   error,
   value,
   onChange,
+  onBlur,
+  onFocus,
 }: SelectProps) {
   return (
     <>
@@ -36,12 +40,18 @@ export default function Select({
           <select
             name={name}
             id={id}
-            className={`h-11 pt-2 pb-2 pl-2.5 border-2 rounded-xl border-input font-inter font-normal ${
+            className={`h-11 pt-2 pb-2 pl-2.5 border-2 rounded-xl ${
+              error !== ""
+                ? "outline-2 outline-error border-error"
+                : "border-input"
+            } font-inter font-normal ${
               value === "0" ? "text-placeholder" : "text-tertiary"
             } bg-input focus:outline-2 focus:outline-secondary focus:border-secondary`}
             disabled={typeof disabled === "undefined" ? false : disabled}
             value={value}
             onChange={onChange}
+            onBlur={onBlur}
+            onFocus={onFocus}
           >
             <option value="0" className="text-placeholder" disabled>
               {defaultOption}
@@ -57,7 +67,10 @@ export default function Select({
                 </option>
               ))}
           </select>
-          <p className="absolute -bottom-6 left-1 font-inter font-medium text-sm text-error hidden">
+          <p
+            id={`${id}Error`}
+            className="absolute -bottom-6 left-1 font-inter font-medium text-sm text-error"
+          >
             {error}
           </p>
         </div>

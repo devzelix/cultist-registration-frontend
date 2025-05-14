@@ -9,7 +9,7 @@ import {
   artCategoriesOptions,
 } from "../utils/formOptions";
 import { getMinBirthDate, getMaxBirthDate } from "../utils/birthDateRange";
-import useForm from "../hooks/useForm";
+import useCultorForm from "../hooks/useCultorForm";
 import "../styles/global.css";
 import logo1 from "../assets/images/logo-1.png";
 import logo2 from "../assets/images/logo-2.png";
@@ -26,10 +26,13 @@ import sendButtonIcon from "../assets/images/sendButtonIcon.webp";
 export default function CultorForm() {
   const {
     formValues,
+    formErrors,
     availableParishes,
     availableArtDisciplines,
     handleChange,
-  } = useForm();
+    handleBlur,
+    handleFocus,
+  } = useCultorForm();
 
   return (
     <>
@@ -50,9 +53,11 @@ export default function CultorForm() {
             label="Nombres"
             width="w-full md:w-[45%]"
             icon={userInputIcon}
-            error="¡ Ingrese un nombre válido !"
+            error={formErrors.firstNameError}
             value={formValues.firstName}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <Input
             type="text"
@@ -62,9 +67,11 @@ export default function CultorForm() {
             label="Apellidos"
             width="w-full md:w-[45%]"
             icon={userInputIcon}
-            error="¡ Ingrese un apellido válido !"
+            error={formErrors.lastNameError}
             value={formValues.lastName}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <IdentityInput
             idSelect="nationality"
@@ -77,10 +84,12 @@ export default function CultorForm() {
             options={nationalityOptions}
             width="w-full md:w-[45%]"
             icon={idInputIcon}
-            error="¡ Ingrese un número válido !"
+            error={formErrors.idNumberError}
             valueSelect={formValues.nationality}
             valueInput={formValues.idNumber}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <Input
             type="date"
@@ -90,8 +99,11 @@ export default function CultorForm() {
             name="birthDate"
             label="Fecha de Nacimiento"
             width="w-full md:w-[45%]"
+            error={formErrors.birthDateError}
             value={formValues.birthDate}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <IdentityInput
             idSelect="phonePrefix"
@@ -104,10 +116,12 @@ export default function CultorForm() {
             options={phonePrefixOptions}
             width="w-full md:w-[45%]"
             icon={phoneInputIcon}
-            error="¡ Ingrese un número válido !"
+            error={formErrors.phoneNumberError}
             valueSelect={formValues.phonePrefix}
             valueInput={formValues.phoneNumber}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <Input
             type="email"
@@ -117,21 +131,25 @@ export default function CultorForm() {
             label="Correo Electrónico"
             width="w-full md:w-[45%]"
             icon={emailInputIcon}
-            error="¡ ingrese un correo electrónico válido !"
+            error={formErrors.emailError}
             value={formValues.email}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <Input
             type="text"
-            placeholder="Ej. @josesolett"
+            placeholder="Ej. josesolett"
             id="instagramUser"
             name="instagramUser"
             label="Usuario de Instagram"
             width="w-full md:w-[45%]"
             icon={instagramInputIcon}
-            error="¡ Ingrese un usuario de instagram válido !"
+            error={formErrors.instagramUserError}
             value={formValues.instagramUser}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <Select
             id="municipalityId"
@@ -140,9 +158,11 @@ export default function CultorForm() {
             defaultOption="Seleccione su municipio..."
             options={municipalityOptions}
             width="w-full md:w-[45%]"
-            error="¡ Seleccione su municipio de residencia !"
+            error={formErrors.municipalityIdError}
             value={formValues.municipalityId}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <Select
             id="parishId"
@@ -152,9 +172,11 @@ export default function CultorForm() {
             options={availableParishes}
             disabled={availableParishes.length === 0}
             width="w-full md:w-[45%]"
-            error="¡ Seleccione su parroquia !"
+            error={formErrors.parishIdError}
             value={formValues.parishId}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <Input
             type="text"
@@ -164,9 +186,11 @@ export default function CultorForm() {
             label="Dirección de Habitación"
             width="w-full md:w-[45%]"
             icon={homeAddressInputIcon}
-            error="¡ Ingrese una dirección válida !"
+            error={formErrors.homeAddressError}
             value={formValues.homeAddress}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <Select
             id="artCategoryId"
@@ -175,9 +199,11 @@ export default function CultorForm() {
             defaultOption="Seleccione su categoría..."
             options={artCategoriesOptions}
             width="w-full md:w-[45%]"
-            error="¡ Seleccione su categoría !"
+            error={formErrors.artCategoryIdError}
             value={formValues.artCategoryId}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <Select
             id="artDisciplineId"
@@ -187,9 +213,11 @@ export default function CultorForm() {
             options={availableArtDisciplines}
             disabled={availableArtDisciplines.length === 0}
             width="w-full md:w-[45%]"
-            error="¡ Seleccione su disciplina !"
+            error={formErrors.artDisciplineIdError}
             value={formValues.artDisciplineId}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <Input
             type="number"
@@ -199,8 +227,11 @@ export default function CultorForm() {
             name="yearsOfExperience"
             label="Años de Trayectoria"
             width="w-full md:w-[45%]"
+            error={formErrors.yearsOfExperienceError}
             value={formValues.yearsOfExperience}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <ConditionalInput
             width="w-full md:w-[45%]"
@@ -211,10 +242,12 @@ export default function CultorForm() {
             placeholder="Ingrese su discapacidad..."
             disabled={formValues.hasDisability === "yes" ? false : true}
             icon={disabilityTypeInputIcon}
-            error="¡ Ingrese su discapacidad !"
+            error={formErrors.disabilityError}
             groupValue={formValues.hasDisability}
             inputValue={formValues.disability}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
           <ConditionalInput
             width="w-full md:w-[45%]"
@@ -225,10 +258,12 @@ export default function CultorForm() {
             placeholder="Ingrese la enfermedad..."
             disabled={formValues.hasIllness === "yes" ? false : true}
             icon={illnessDetailsInputIcon}
-            error="¡ Ingrese la enfermedad !"
+            error={formErrors.illnessError}
             groupValue={formValues.hasIllness}
             inputValue={formValues.illness}
             onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
           />
         </div>
         <div className="flex mt-7 items-center justify-center">

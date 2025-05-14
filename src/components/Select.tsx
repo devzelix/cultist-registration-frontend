@@ -32,8 +32,11 @@ export default function Select({
 }: SelectProps) {
   return (
     <>
-      <div className={`${width} flex flex-col gap-y-2`}>
-        <label htmlFor={id} className="font-inter font-medium text-text">
+      <div className={`${width} flex flex-col gap-y-2 md:w-[48%]`}>
+        <label
+          htmlFor={id}
+          className="font-inter font-medium text-text md:text-xl"
+        >
           {label}
         </label>
         <div className="relative flex flex-col gap-y-0.5">
@@ -46,7 +49,7 @@ export default function Select({
                 : "border-input"
             } font-inter font-normal ${
               value === "0" ? "text-placeholder" : "text-tertiary"
-            } bg-input focus:outline-2 focus:outline-secondary focus:border-secondary`}
+            } bg-input focus:outline-2 focus:outline-secondary focus:border-secondary md:h-13 md:border-3 md:rounded-2xl md:text-lg`}
             disabled={typeof disabled === "undefined" ? false : disabled}
             value={value}
             onChange={onChange}
@@ -69,7 +72,7 @@ export default function Select({
           </select>
           <p
             id={`${id}Error`}
-            className="absolute -bottom-6 left-1 font-inter font-medium text-sm text-error"
+            className="absolute -bottom-6 left-1 font-inter font-medium text-sm text-error md:text-[0.97rem] md:-bottom-[1.8rem]"
           >
             {error}
           </p>

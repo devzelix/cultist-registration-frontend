@@ -1,4 +1,9 @@
-import { useState, type ChangeEvent, type FocusEvent } from "react";
+import {
+  useState,
+  type ChangeEvent,
+  type FocusEvent,
+  type FormEvent,
+} from "react";
 import type { FormValues, FormErrors } from "../utils/interfaces";
 import { initialFormValues, initialFormErrors } from "../utils/initialForm";
 import { parishOptions, artDisciplinesOptions } from "../utils/formOptions";
@@ -7,10 +12,12 @@ import useRestartConditionalInput from "./useRestartConditionalInput";
 import handleFieldChange from "../utils/handleFieldChange";
 import handleFieldBlur from "../utils/handleFieldBlur";
 import handleFieldFocus from "../utils/handleFieldFocus";
+import handleFormSubmit from "../utils/handleFormSubmit";
 
 export default function useCultorForm() {
   const [formValues, setFormValues] = useState<FormValues>(initialFormValues);
   const [formErrors, setFormErrors] = useState<FormErrors>(initialFormErrors);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const availableParishes = useDependentOptions(
     parishOptions,
@@ -51,13 +58,18 @@ export default function useCultorForm() {
   const onFocus = (e: FocusEvent<HTMLInputElement | HTMLSelectElement>) =>
     handleFieldFocus(e, setFormErrors);
 
+  const onSubmit = (e: FormEvent<HTMLFormElement>) =>
+    handleFormSubmit(e, formValues, formErrors, setFormErrors, setIsLoading);
+
   return {
     formValues,
     formErrors,
+    isLoading,
     availableParishes,
     availableArtDisciplines,
     handleChange: onChange,
     handleBlur: onBlur,
     handleFocus: onFocus,
+    handleSubmit: onSubmit,
   };
 }

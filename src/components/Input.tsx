@@ -8,7 +8,6 @@ interface InputProps {
   id: string;
   name: string;
   label: string;
-  width: string;
   icon?: string;
   error?: string;
   value: string;
@@ -25,7 +24,6 @@ export default function Input({
   id,
   name,
   label,
-  width,
   icon,
   error,
   value,
@@ -35,8 +33,11 @@ export default function Input({
 }: InputProps) {
   return (
     <>
-      <div className={`${width} flex flex-col gap-y-2`}>
-        <label htmlFor={id} className="font-inter font-medium text-text">
+      <div className="w-full flex flex-col gap-y-2 md:w-[48%]">
+        <label
+          htmlFor={id}
+          className="font-inter font-medium text-text md:text-xl"
+        >
           {label}
         </label>
         <div className="relative flex flex-col gap-y-0.5">
@@ -55,7 +56,7 @@ export default function Input({
               error !== ""
                 ? "outline-2 outline-error border-error"
                 : "border-input"
-            } bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:color-placeholder`}
+            } bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:text-placeholder md:h-13 md:border-3 md:rounded-2xl md:text-lg`}
             value={value}
             onChange={onChange}
             onBlur={onBlur}
@@ -65,14 +66,14 @@ export default function Input({
             <img
               src={icon}
               alt=""
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 size-5"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 size-5 md:size-6 md:top-[47%]"
             />
           )}
 
           {error && (
             <p
               id={`${id}Error`}
-              className="absolute -bottom-6 left-1 font-inter text-sm font-medium text-error"
+              className="absolute -bottom-6 left-1 font-inter text-sm font-medium text-error md:text-[0.97rem] md:-bottom-[1.8rem]"
             >
               {error}
             </p>

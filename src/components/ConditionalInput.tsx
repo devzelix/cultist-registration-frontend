@@ -35,16 +35,19 @@ export default function ConditionalInput({
 }: ConditionalInputProps) {
   return (
     <>
-      <div className={`${width} flex flex-col gap-y-2`}>
-        <label htmlFor="" className="font-inter font-medium text-text">
+      <div className={`${width} flex flex-col gap-y-2 md:w-[48%]`}>
+        <label
+          htmlFor=""
+          className="font-inter font-medium text-text md:text-xl"
+        >
           {label}
         </label>
         <div className="flex justify-between gap-x-3">
-          <div className="w-1/4 flex justify-around gap-x-3">
-            <div className="width-[45%] flex items-center gap-x-0.5">
+          <div className="w-1/4 flex justify-around gap-x-2 md:gap-x-3">
+            <div className="width-[45%] flex items-center gap-x-0.5 md:gap-x-1">
               <label
                 htmlFor={`${groupName}-yes`}
-                className="font-inter font-medium text-text"
+                className="font-inter font-medium text-text md:text-lg"
               >
                 Si
               </label>
@@ -57,10 +60,10 @@ export default function ConditionalInput({
                 onChange={onChange}
               />
             </div>
-            <div className="width-[45%] flex items-center gap-x-0.5">
+            <div className="width-[45%] flex items-center gap-x-0.5 md:gap-x-1">
               <label
                 htmlFor={`${groupName}-no`}
-                className="font-inter font-medium text-text"
+                className="font-inter font-medium text-text md:text-lg"
               >
                 No
               </label>
@@ -84,7 +87,7 @@ export default function ConditionalInput({
                 error !== ""
                   ? "outline-2 outline-error border-error"
                   : "border-input"
-              } rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:text-placeholder`}
+              } rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:text-placeholder md:h-13 md:pr-10 md:border-3 md:rounded-2xl md:text-lg`}
               disabled={disabled}
               value={inputValue}
               onChange={onChange}
@@ -94,7 +97,7 @@ export default function ConditionalInput({
             <img
               src={icon}
               alt=""
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 size-5 md:size-6 md:top-[49%]"
             />
             <p
               id={`${idInput}Error`}

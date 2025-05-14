@@ -10,7 +10,6 @@ interface IdentityInputProps {
   labelInput: string;
   placeholder: string;
   options: Option[];
-  width: string;
   icon: string;
   error: string;
   valueSelect: string;
@@ -29,7 +28,6 @@ export default function IdentityInput({
   labelInput,
   placeholder,
   options,
-  width,
   icon,
   error,
   valueSelect,
@@ -40,15 +38,18 @@ export default function IdentityInput({
 }: IdentityInputProps) {
   return (
     <>
-      <div className={`${width} flex flex-col gap-y-2`}>
-        <label htmlFor={idSelect} className="font-inter font-medium text-text">
+      <div className="w-full flex flex-col gap-y-2 md:w-[48%]">
+        <label
+          htmlFor={idSelect}
+          className="font-inter font-medium text-text md:text-xl"
+        >
           {labelInput}
         </label>
         <div className="flex justify-between">
           <select
             name={nameSelect}
             id={idSelect}
-            className="w-1/4 h-11 pt-2 pb-2 pl-2.5 border-2 border-input rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary"
+            className="w-1/4 h-11 pt-2 pb-2 pl-2.5 border-2 border-input rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary md:h-13 md:border-3 md:rounded-2xl md:text-lg"
             aria-label={labelSelect}
             value={valueSelect}
             onChange={onChange}
@@ -69,7 +70,7 @@ export default function IdentityInput({
                 error !== ""
                   ? "outline-2 outline-error border-error"
                   : "border-input"
-              } rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:text-placeholder`}
+              } rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:text-placeholder md:h-13 md:pr-11 md:border-3 md:rounded-2xl md:text-lg`}
               aria-describedby={`${idInput}Error`}
               value={valueInput}
               onChange={onChange}
@@ -80,12 +81,12 @@ export default function IdentityInput({
               <img
                 src={icon}
                 alt=""
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 size-5 md:size-6 md:top-[47%]"
               />
             )}
             <p
               id={`${idInput}Error`}
-              className="absolute -bottom-6 left-1 font-inter font-medium text-sm text-error"
+              className="absolute -bottom-6 left-1 font-inter font-medium text-sm text-error md:text-[0.97rem] md:-bottom-[1.8rem]"
             >
               {error}
             </p>

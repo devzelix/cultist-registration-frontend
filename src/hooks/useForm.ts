@@ -3,6 +3,7 @@ import type { FormValues } from "../utils/interfaces";
 import { initialFormValues } from "../utils/initialFormValues";
 import { parishOptions, artDisciplinesOptions } from "../utils/formOptions";
 import useDependentOptions from "./useDependentOptions";
+import useRestartConditionalInput from "./useRestartConditionalInput";
 
 export default function useForm() {
   const [formValues, setFormValues] = useState<FormValues>(initialFormValues);
@@ -20,6 +21,14 @@ export default function useForm() {
     setFormValues,
     "artDisciplineId"
   );
+
+  useRestartConditionalInput(
+    formValues.hasDisability,
+    setFormValues,
+    "disability"
+  );
+
+  useRestartConditionalInput(formValues.hasIllness, setFormValues, "illness");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>

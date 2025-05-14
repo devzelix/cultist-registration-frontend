@@ -20,8 +20,6 @@ export interface FormValues {
   artCategoryId: string;
   artDisciplineId: string;
   yearsOfExperience: string;
-  registeredCne: string;
-  votingCenter: string;
   hasDisability: string;
   disability: string;
   hasIllness: string;

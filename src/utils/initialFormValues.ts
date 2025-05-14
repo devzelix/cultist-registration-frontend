@@ -17,8 +17,6 @@ export const initialFormValues: FormValues = {
   artCategoryId: "0",
   artDisciplineId: "0",
   yearsOfExperience: "1",
-  registeredCne: "no",
-  votingCenter: "",
   hasDisability: "no",
   disability: "",
   hasIllness: "no",

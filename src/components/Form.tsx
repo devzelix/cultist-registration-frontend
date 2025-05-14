@@ -19,7 +19,6 @@ import phoneInputIcon from "../assets/images/phone-input-icon.webp";
 import emailInputIcon from "../assets/images/emailInputIcon.webp";
 import instagramInputIcon from "../assets/images/instagramInputIcon.webp";
 import homeAddressInputIcon from "../assets/images/homeAddressInputIcon.webp";
-import votingCenterInputIcon from "../assets/images/votingCenterInputIcon.webp";
 import disabilityTypeInputIcon from "../assets/images/disabilityTypeInputIcon.webp";
 import illnessDetailsInputIcon from "../assets/images/illnessDetailsInputIcon.webp";
 import sendButtonIcon from "../assets/images/sendButtonIcon.webp";
@@ -201,20 +200,6 @@ export default function Form() {
             label="Años de Trayectoria"
             width="w-full md:w-[45%]"
             value={formValues.yearsOfExperience}
-            onChange={handleChange}
-          />
-          <ConditionalInput
-            width="w-full md:w-[45%]"
-            groupName="registeredCne"
-            label="¿Está registrado en el CNE?"
-            idInput="votingCenter"
-            nameInput="votingCenter"
-            placeholder="Ingrese su centro..."
-            disabled={formValues.registeredCne === "yes" ? false : true}
-            icon={votingCenterInputIcon}
-            error="¡ Ingrese un centro válido !"
-            groupValue={formValues.registeredCne}
-            inputValue={formValues.votingCenter}
             onChange={handleChange}
           />
           <ConditionalInput

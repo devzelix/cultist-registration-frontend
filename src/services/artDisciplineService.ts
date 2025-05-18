@@ -1,6 +1,6 @@
 import type { Option } from "../utils/interfaces";
 
-const API_URL = "http://192.168.0.190:8080";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export async function getAll() {
   try {

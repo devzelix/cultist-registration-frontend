@@ -1,9 +1,11 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { FormValues } from "./interfaces";
+import type { FormErrors, FormValues } from "./interfaces";
 
 export default function handleFieldChange<K extends keyof FormValues>(
   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  setFormValues: Dispatch<SetStateAction<FormValues>>
+  formErrors: FormErrors,
+  setFormValues: Dispatch<SetStateAction<FormValues>>,
+  setFormErrors: Dispatch<SetStateAction<FormErrors>>
 ) {
   const { name, value } = e.target;
   const key = name as K;
@@ -11,4 +13,11 @@ export default function handleFieldChange<K extends keyof FormValues>(
     ...prevState,
     [key]: value,
   }));
+  const keyError = `${key}Error` as keyof FormErrors;
+  if (formErrors[keyError] !== "") {
+    setFormErrors((prev) => ({
+      ...prev,
+      [keyError]: "",
+    }));
+  }
 }

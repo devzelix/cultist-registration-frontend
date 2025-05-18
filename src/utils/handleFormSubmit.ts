@@ -10,78 +10,84 @@ import validateSelect from "./validateSelect";
 import validateHomeAddress from "./validateHomeAddress";
 import validateYearsOfExperience from "./validateYearsOfExperience";
 import validateDescriptionField from "./validateDescriptionField";
+import { create } from "../services/cultistService";
+import formatRequest from "./formatRequest";
+import determinateFieldConflict from "./determinateFieldConflict";
 
-export default function handleFormSubmit<K extends keyof FormValues>(
+export default async function handleFormSubmit<K extends keyof FormValues>(
   e: FormEvent,
   formValues: FormValues,
-  formError: FormErrors,
   setFormErrors: Dispatch<SetStateAction<FormErrors>>,
-  setIsLoading: Dispatch<SetStateAction<boolean>>
+  setIsLoading: Dispatch<SetStateAction<boolean>>,
+  setIsError: Dispatch<SetStateAction<boolean>>,
+  setIsCreated: Dispatch<SetStateAction<boolean>>,
+  setStatusConflict: Dispatch<SetStateAction<boolean>>,
+  setMessageConflict: Dispatch<SetStateAction<string>>
 ) {
   e.preventDefault();
 
-  const firstNameError = validateName("firstName" as K, formValues.firstName);
-  const lastNameError = validateName("lastName" as K, formValues.lastName);
-  const idNumberError = validateIdNumber(formValues.idNumber);
-  const birthDateError = validateBirthDate(formValues.birthDate);
-  const phoneNumberError = validatePhoneNumber(formValues.phoneNumber);
-  const emailError = validateEmail(formValues.email);
-  const instagramUserError = validateInstagramUser(formValues.instagramUser);
-  const municipalityIdError = validateSelect(
-    "municipalityId" as K,
-    formValues.municipalityId
-  );
-  const parishIdError = validateSelect("parishId" as K, formValues.parishId);
-  const homeAddressError = validateHomeAddress(formValues.homeAddress);
-  const artCategoryIdError = validateSelect(
-    "artCategoryId" as K,
-    formValues.artCategoryId
-  );
-  const artDisciplineIdError = validateSelect(
-    "artDisciplineId" as K,
-    formValues.artDisciplineId
-  );
-  const yearsOfExperienceError = validateYearsOfExperience(
-    formValues.yearsOfExperience
-  );
-  const disabilityError =
-    formValues.hasDisability === "yes"
-      ? validateDescriptionField("disability" as K, formValues.disability)
-      : "";
-  const illnessError =
-    formValues.hasIllness === "yes"
-      ? validateDescriptionField("illness" as K, formValues.illness)
-      : "";
+  const tempErrors: FormErrors = {
+    firstNameError: validateName("firstName" as K, formValues.firstName),
+    lastNameError: validateName("lastName" as K, formValues.lastName),
+    idNumberError: validateIdNumber(formValues.idNumber),
+    birthDateError: validateBirthDate(formValues.birthDate),
+    phoneNumberError: validatePhoneNumber(formValues.phoneNumber),
+    emailError: validateEmail(formValues.email),
+    instagramUserError: validateInstagramUser(formValues.instagramUser),
+    municipalityIdError: validateSelect(
+      "municipalityId" as K,
+      formValues.municipalityId
+    ),
+    parishIdError: validateSelect("parishId" as K, formValues.parishId),
+    homeAddressError: validateHomeAddress(formValues.homeAddress),
+    artCategoryIdError: validateSelect(
+      "artCategoryId" as K,
+      formValues.artCategoryId
+    ),
+    artDisciplineIdError: validateSelect(
+      "artDisciplineId" as K,
+      formValues.artDisciplineId
+    ),
+    yearsOfExperienceError: validateYearsOfExperience(
+      formValues.yearsOfExperience
+    ),
+    groupNameError:
+      formValues.groupName.length > 0
+        ? validateDescriptionField("groupName" as K, formValues.groupName)
+        : "",
+    disabilityError:
+      formValues.hasDisability === "yes"
+        ? validateDescriptionField("disability" as K, formValues.disability)
+        : "",
+    illnessError:
+      formValues.hasIllness === "yes"
+        ? validateDescriptionField("illness" as K, formValues.illness)
+        : "",
+  };
 
-  setFormErrors({
-    firstNameError: firstNameError,
-    lastNameError: lastNameError,
-    idNumberError: idNumberError,
-    birthDateError: birthDateError,
-    phoneNumberError: phoneNumberError,
-    emailError: emailError,
-    instagramUserError: instagramUserError,
-    municipalityIdError: municipalityIdError,
-    parishIdError: parishIdError,
-    homeAddressError: homeAddressError,
-    artCategoryIdError: artCategoryIdError,
-    artDisciplineIdError: artDisciplineIdError,
-    yearsOfExperienceError: yearsOfExperienceError,
-    disabilityError: disabilityError,
-    illnessError: illnessError,
-  });
+  setFormErrors(tempErrors);
 
   if (
-    !Object.values(formError).some((error) => {
-      console.log(error);
+    !Object.values(tempErrors).some((error) => {
       return error !== "";
     })
   ) {
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      alert("¡Formulario enviado!");
-    }, 2000);
+    const response = await create(formatRequest(formValues));
+    setIsLoading(false);
+    if (!response) {
+      setIsError(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if ("status" in response && response.status === 409) {
+      setStatusConflict(true);
+      setMessageConflict(determinateFieldConflict(response.error));
+    } else {
+      setIsCreated(true);
+      setTimeout(() => {
+        window.location.href = "http://cultura.carabobo.gob.ve/";
+      }, 5000);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   } else {
     const errorFieldOrder: (keyof FormErrors)[] = [
       "firstNameError",
@@ -97,12 +103,13 @@ export default function handleFormSubmit<K extends keyof FormValues>(
       "artCategoryIdError",
       "artDisciplineIdError",
       "yearsOfExperienceError",
+      "groupNameError",
       "disabilityError",
       "illnessError",
     ];
 
     for (const errorKey of errorFieldOrder) {
-      if (formError[errorKey]) {
+      if (tempErrors[errorKey]) {
         const inputName = errorKey.replace("Error", "");
         const field = document.querySelector(
           `[name="${inputName}"]`

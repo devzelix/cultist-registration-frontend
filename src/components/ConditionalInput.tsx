@@ -14,7 +14,6 @@ interface ConditionalInputProps {
   inputValue: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onBlur: (e: FocusEvent<HTMLInputElement>) => void;
-  onFocus: (e: FocusEvent<HTMLInputElement>) => void;
 }
 
 export default function ConditionalInput({
@@ -31,23 +30,19 @@ export default function ConditionalInput({
   inputValue,
   onChange,
   onBlur,
-  onFocus,
 }: ConditionalInputProps) {
   return (
     <>
-      <div className={`${width} flex flex-col gap-y-2 md:w-[48%]`}>
-        <label
-          htmlFor=""
-          className="font-inter font-medium text-text md:text-xl"
-        >
+      <div className={`${width} flex flex-col gap-y-2`}>
+        <label htmlFor="" className="font-inter font-medium text-text">
           {label}
         </label>
         <div className="flex justify-between gap-x-3">
-          <div className="w-1/4 flex justify-around gap-x-2 md:gap-x-3">
-            <div className="width-[45%] flex items-center gap-x-0.5 md:gap-x-1">
+          <div className="w-1/4 flex justify-around gap-x-2">
+            <div className="width-[45%] flex items-center gap-x-0.5">
               <label
                 htmlFor={`${groupName}-yes`}
-                className="font-inter font-medium text-text md:text-lg"
+                className="font-inter font-medium text-text"
               >
                 Si
               </label>
@@ -60,10 +55,10 @@ export default function ConditionalInput({
                 onChange={onChange}
               />
             </div>
-            <div className="width-[45%] flex items-center gap-x-0.5 md:gap-x-1">
+            <div className="width-[45%] flex items-center gap-x-0.5">
               <label
                 htmlFor={`${groupName}-no`}
-                className="font-inter font-medium text-text md:text-lg"
+                className="font-inter font-medium text-text"
               >
                 No
               </label>
@@ -85,19 +80,18 @@ export default function ConditionalInput({
               name={nameInput}
               className={`w-full h-11 pt-2 pr-9 pb-2 pl-2.5 border-2 ${
                 error !== ""
-                  ? "outline-2 outline-error border-error"
-                  : "border-input"
-              } rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:text-placeholder md:h-13 md:pr-10 md:border-3 md:rounded-2xl md:text-lg`}
+                  ? "border-error outline-error"
+                  : " border-input outline-input "
+              } bg-input outline-[0.05px] rounded-xl font-inter font-normal placeholder:font-inter placeholder:font-normal placeholder:text-placeholder focus:outline-[2.85px] focus:outline-secondary focus:border-secondary`}
               disabled={disabled}
               value={inputValue}
               onChange={onChange}
               onBlur={onBlur}
-              onFocus={onFocus}
             />
             <img
               src={icon}
               alt=""
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 size-5 md:size-6 md:top-[49%]"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 size-5"
             />
             <p
               id={`${idInput}Error`}

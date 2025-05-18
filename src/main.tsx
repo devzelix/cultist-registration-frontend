@@ -1,5 +1,3 @@
-/* Importing React's StrictMode to help identify potential problems in the app */
-import { StrictMode } from "react";
 /* Importing the ReactDOM client to render the app to the DOM */
 import { createRoot } from "react-dom/client";
 /* Importing the main App component for the application */
@@ -11,8 +9,4 @@ import "./styles/global.css";
 const ROOT = createRoot(document.getElementById("root") as HTMLElement);
 
 /* Rendering the App component inside StrictMode to enable additional checks during development */
-ROOT.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+ROOT.render(<App />);

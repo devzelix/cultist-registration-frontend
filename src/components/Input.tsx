@@ -13,7 +13,6 @@ interface InputProps {
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onBlur: (e: FocusEvent<HTMLInputElement>) => void;
-  onFocus: (e: FocusEvent<HTMLInputElement>) => void;
 }
 
 export default function Input({
@@ -29,7 +28,6 @@ export default function Input({
   value,
   onChange,
   onBlur,
-  onFocus,
 }: InputProps) {
   return (
     <>
@@ -50,17 +48,16 @@ export default function Input({
             max={type === "date" || type === "number" ? max : undefined}
             id={id}
             name={name}
-            className={`h-11 pt-2 ${
+            className={`appearance-none h-11 pt-2 ${
               type === "date" || type === "number" ? "pr-2.5" : "pr-9"
             } pb-2 pl-2.5 w-full border-2 rounded-xl font-inter font-normal text-tertiary ${
               error !== ""
-                ? "outline-2 outline-error border-error"
-                : "border-input"
-            } bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:text-placeholder md:h-13 md:border-3 md:rounded-2xl md:text-lg`}
+                ? "border-error outline-error"
+                : " border-input outline-input"
+            } bg-input placeholder:font-inter placeholder:font-normal placeholder:text-placeholder focus:outline-[2.85px] focus:outline-secondary focus:border-secondary md:h-13 md:border-3 md:rounded-2xl md:text-lg`}
             value={value}
             onChange={onChange}
             onBlur={onBlur}
-            onFocus={onFocus}
           />
           {icon && (
             <img

@@ -26,6 +26,7 @@ export interface FormValues {
   artCategoryId: string; // Art category ID.
   artDisciplineId: string; // Art discipline ID.
   yearsOfExperience: string; // Years of experience.
+  groupName: string;
   hasDisability: string; // Indicates if the user has a disability.
   disability: string; // Disability details (if applicable).
   hasIllness: string; // Indicates if the user has an illness.
@@ -46,6 +47,53 @@ export interface FormErrors {
   artCategoryIdError: string;
   artDisciplineIdError: string;
   yearsOfExperienceError: string;
+  groupNameError: string;
   disabilityError: string;
   illnessError: string;
+}
+
+export interface RequestBody {
+  firstName: string;
+  lastName: string;
+  idNumber: string;
+  birthDate: string;
+  phoneNumber: string;
+  email: string;
+  instagramUser: string;
+  municipalityId: number;
+  parishId: number;
+  homeAddress: string;
+  artCategoryId: number;
+  artDisciplineId: number;
+  yearsOfExperience: number;
+  groupName: string;
+  disability: string;
+  illness: string;
+}
+
+export interface SuccessBody {
+  id: number;
+  firstName: string;
+  lastName: string;
+  idNumber: string;
+  birthDate: Date;
+  phoneNumber: string;
+  email: string;
+  instagramUser: string;
+  municipalityId: number;
+  parishId: number;
+  homeAddress: string;
+  artCategoryId: number;
+  artDisciplineId: number;
+  yearsOfExperience: number;
+  groupName: string;
+  disability: string;
+  illness: string;
+}
+
+export interface ConflictBody {
+  timestamp: string;
+  status: number;
+  error: string;
+  path: string;
 }

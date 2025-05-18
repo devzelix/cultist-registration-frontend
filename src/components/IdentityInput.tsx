@@ -16,7 +16,6 @@ interface IdentityInputProps {
   valueInput: string;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   onBlur: (e: FocusEvent<HTMLInputElement>) => void;
-  onFocus: (e: FocusEvent<HTMLInputElement>) => void;
 }
 
 export default function IdentityInput({
@@ -34,7 +33,6 @@ export default function IdentityInput({
   valueInput,
   onChange,
   onBlur,
-  onFocus,
 }: IdentityInputProps) {
   return (
     <>
@@ -49,7 +47,7 @@ export default function IdentityInput({
           <select
             name={nameSelect}
             id={idSelect}
-            className="w-1/4 h-11 pt-2 pb-2 pl-2.5 border-2 border-input rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary md:h-13 md:border-3 md:rounded-2xl md:text-lg"
+            className="w-1/4 h-11 pt-2 pb-2 pl-2.5 border-2 border-input rounded-xl font-inter font-normal bg-input focus:outline-[2.75px] focus:outline-secondary focus:border-secondary md:h-13 md:border-3 md:rounded-2xl md:text-lg"
             aria-label={labelSelect}
             value={valueSelect}
             onChange={onChange}
@@ -68,14 +66,13 @@ export default function IdentityInput({
               placeholder={placeholder}
               className={`w-full h-11 pt-2 pr-9 pb-2 pl-2.5 border-2 ${
                 error !== ""
-                  ? "outline-2 outline-error border-error"
-                  : "border-input"
-              } rounded-xl font-inter font-normal bg-input focus:outline-2 focus:outline-secondary focus:border-secondary placeholder:font-inter placeholder:font-normal placeholder:text-placeholder md:h-13 md:pr-11 md:border-3 md:rounded-2xl md:text-lg`}
+                  ? "border-error outline-error"
+                  : " border-input outline-input "
+              } bg-input outline-[0.05px] rounded-xl font-inter font-normal placeholder:font-inter placeholder:font-normal placeholder:text-placeholder focus:outline-[2.85px] focus:outline-secondary focus:border-secondary md:h-13 md:pr-11 md:border-3 md:rounded-2xl md:text-lg`}
               aria-describedby={`${idInput}Error`}
               value={valueInput}
               onChange={onChange}
               onBlur={onBlur}
-              onFocus={onFocus}
             />
             {icon !== "" && (
               <img

@@ -1,13 +1,32 @@
 import facebook from "../assets/images/facebook-icon.webp";
 import instagram from "../assets/images/instagram-icon.webp";
 import web from "../assets/images/web-icon.webp";
-import CultorForm from "../components/CultorForm";
+import CultorForm from "../components/CultorRegistrationPanel";
+import DuplicateEntryModal from "../components/DuplicateEntryModal";
+import useModal from "../hooks/useModal";
 
 export default function App() {
+  const {
+    isStatusConflict,
+    setIsStatusConflict,
+    messageConflict,
+    setMessageConflict,
+    focusConflictField,
+  } = useModal();
   return (
     <>
+      {isStatusConflict && (
+        <DuplicateEntryModal
+          message={messageConflict}
+          onClick={focusConflictField}
+          isDisabled={isStatusConflict}
+        />
+      )}
       <main className="w-full pt-9 pr-1 pb-10 pl-1 flex items-center justify-center bg-primary md:pt-22 md:pr-5 md:pb-23 md:pl-5">
-        <CultorForm />
+        <CultorForm
+          setIsStatusConflict={setIsStatusConflict}
+          setMessageConflict={setMessageConflict}
+        />
       </main>
       <footer className="p-10 flex flex-col items-center justify-center gap-y-8 bg-tertiary shadow-[-5px_-5px_10px_rgba(0,0,0,0.3)]">
         <div className="flex items-center justify-center gap-x-6 md:gap-x-9">

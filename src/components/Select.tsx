@@ -13,7 +13,6 @@ interface SelectProps {
   value: string;
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
   onBlur: (e: FocusEvent<HTMLSelectElement>) => void;
-  onFocus: (e: FocusEvent<HTMLSelectElement>) => void;
 }
 
 export default function Select({
@@ -28,7 +27,6 @@ export default function Select({
   value,
   onChange,
   onBlur,
-  onFocus,
 }: SelectProps) {
   return (
     <>
@@ -45,16 +43,15 @@ export default function Select({
             id={id}
             className={`h-11 pt-2 pb-2 pl-2.5 border-2 rounded-xl ${
               error !== ""
-                ? "outline-2 outline-error border-error"
-                : "border-input"
-            } font-inter font-normal ${
+                ? "border-error outline-error"
+                : " border-input outline-input"
+            } bg-input outline-[0.05px] font-inter font-normal focus:outline-[2.85px] focus:outline-secondary focus:border-secondary ${
               value === "0" ? "text-placeholder" : "text-tertiary"
-            } bg-input focus:outline-2 focus:outline-secondary focus:border-secondary md:h-13 md:border-3 md:rounded-2xl md:text-lg`}
+            } md:h-13 md:border-3 md:rounded-2xl md:text-lg`}
             disabled={typeof disabled === "undefined" ? false : disabled}
             value={value}
             onChange={onChange}
             onBlur={onBlur}
-            onFocus={onFocus}
           >
             <option value="0" className="text-placeholder" disabled>
               {defaultOption}

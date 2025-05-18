@@ -23,6 +23,7 @@ export const initialFormValues: FormValues = {
   artCategoryId: "0", // Default to "0" for art category ID (unassigned).
   artDisciplineId: "0", // Default to "0" for art discipline ID (unassigned).
   yearsOfExperience: "1", // Default to "1" year of experience.
+  groupName: "",
   hasDisability: "no", // Default to "no" for disability status.
   disability: "", // Default to empty string for disability details.
   hasIllness: "no", // Default to "no" for illness status.
@@ -43,6 +44,7 @@ export const initialFormErrors: FormErrors = {
   artCategoryIdError: "",
   artDisciplineIdError: "",
   yearsOfExperienceError: "",
+  groupNameError: "",
   disabilityError: "",
   illnessError: "",
 };

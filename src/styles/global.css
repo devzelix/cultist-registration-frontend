@@ -38,13 +38,14 @@
   --color-text: #f3f3f3; /* Text color for the theme */
   --color-placeholder: #636363; /* Placeholder color for input fields */
   --color-input: #f9f9f9; /* Background color for input fields */
+  --color-focus: #5e89ff;
   --color-error: #ff002b; /* Error color for form validation or alerts */
   --breakpoint-sm: 30rem;
 }
 
-.loader {
-  border: 8px solid #fff;
-  border-bottom-color: #ff3d00;
+.loading {
+  border: 8px solid #f9f9f9;
+  border-bottom-color: #fc5e03;
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
@@ -57,5 +58,35 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.redirecting {
+  display: block;
+  position: relative;
+  background: #f3f3f3;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.redirecting::after {
+  content: "";
+  width: 40%;
+  height: 100%;
+  background: #fc5e03;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  animation: animloader 2s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    left: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    left: 100%;
+    transform: translateX(0%);
   }
 }

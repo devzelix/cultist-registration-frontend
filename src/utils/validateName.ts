@@ -6,11 +6,11 @@ export default function validateName<K extends keyof FormValues>(
 ): string {
   name = name.trim();
 
-  const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:[\s][A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$/;
+  const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ'\- ]{1,50}$/;
 
   if (!name) {
     if (key === "firstName") return "¡ Nombre requerido !";
-    return "¡ Apellido requerido !";
+    if (key === "lastName") return "¡ Apellido requerido !";
   }
 
   if (name.length > 50) return "¡ Máximo 50 caracteres !";

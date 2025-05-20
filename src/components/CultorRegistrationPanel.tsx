@@ -35,9 +35,9 @@ export default function CultorForm({
       <div
         className={`w-full ${
           isLoading || isStatusError || isStatusCreated
-            ? "pt-1 pr-7 pb-7 pl-7 h-[75vh] flex flex-col items-center justify-center gap-y-3"
-            : "pt-10 pr-3 pb-15 pl-3"
-        } rounded-4xl bg-[#f3f3f3]/5 backdrop-blur-xs shadow-2xl`}
+            ? "pt-1 pr-7 pb-7 pl-7 h-[75vh] flex flex-col items-center justify-center gap-y-3 md:pr-20 md:pl-20"
+            : "pt-10 pr-3 pb-15 pl-3 md:pt-13 md:pr-10 md:pb-18 md:pl-10"
+        } rounded-4xl bg-[#f3f3f3]/5 backdrop-blur-xs shadow-2xl md:rounded-[2.25rem]`}
       >
         {isLoading && <Loader />}
         {isStatusError && <ServerErrorMessage />}

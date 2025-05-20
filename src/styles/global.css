@@ -44,7 +44,6 @@
 }
 
 .loading {
-  border: 8px solid #f9f9f9;
   border-bottom-color: #fc5e03;
   border-radius: 50%;
   display: inline-block;

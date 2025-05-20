@@ -45,15 +45,18 @@ export default function Form({
 }: FormProps) {
   return (
     <>
-      <form className="flex flex-col gap-y-7" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col gap-y-7 md:gap-y-10"
+        onSubmit={handleSubmit}
+      >
         <div className="w-full flex justify-between">
           <img src={logo1} className="size-25 md:size-40" />
           <img src={logo2} className="size-25 md:size-40" />
         </div>
-        <p className="mb-2 text-3xl font-playfair font-bold text-center text-[#f3f3f3] sm:text-4xl md:text-5xl md:mb-7">
+        <p className="mb-2 text-3xl font-playfair font-bold text-center text-[#f3f3f3] md:mb-4 md:text-5xl">
           Formulario de Registro
         </p>
-        <div className="w-full flex flex-col justify-between gap-y-12 md:flex-row md:flex-wrap md:gap-y-14">
+        <div className="w-full flex flex-col justify-between gap-y-12 md:gap-y-18">
           <Input
             type="text"
             placeholder="Ej. José Ángel"
@@ -152,7 +155,6 @@ export default function Form({
             label="Municipio de Residencia"
             defaultOption="Seleccione su municipio..."
             options={municipalitiesOptions}
-            width="w-full md:w-[45%]"
             error={formErrors.municipalityIdError}
             value={formValues.municipalityId}
             onChange={handleChange}
@@ -165,7 +167,6 @@ export default function Form({
             defaultOption="Seleccione su parroquia..."
             options={availableParishes}
             disabled={availableParishes.length === 0}
-            width="w-full md:w-[45%]"
             error={formErrors.parishIdError}
             value={formValues.parishId}
             onChange={handleChange}
@@ -189,7 +190,6 @@ export default function Form({
             label="Cartegoría Artística"
             defaultOption="Seleccione su categoría..."
             options={artCategoriesOptions}
-            width="w-full md:w-[45%]"
             error={formErrors.artCategoryIdError}
             value={formValues.artCategoryId}
             onChange={handleChange}
@@ -202,7 +202,6 @@ export default function Form({
             defaultOption="Seleccione su disciplina..."
             options={availableArtDisciplines}
             disabled={availableArtDisciplines.length === 0}
-            width="w-full md:w-[45%]"
             error={formErrors.artDisciplineIdError}
             value={formValues.artDisciplineId}
             onChange={handleChange}
@@ -233,7 +232,6 @@ export default function Form({
             onBlur={handleBlur}
           />
           <ConditionalInput
-            width="w-full md:w-[45%]"
             groupName="hasDisability"
             label="¿Tiene alguna discapacidad?"
             idInput="disability"
@@ -248,7 +246,6 @@ export default function Form({
             onBlur={handleBlur}
           />
           <ConditionalInput
-            width="w-full md:w-[45%]"
             groupName="hasIllness"
             label="¿Sufre alguna Enfermedad?"
             idInput="illness"
@@ -266,10 +263,10 @@ export default function Form({
         <div className="flex mt-7 items-center justify-center md:mt-9">
           <button
             type="submit"
-            className="w-9/12 h-14 flex items-center justify-center gap-x-2.5 border-2 rounded-3xl border-secondary font-playfair font-bold text-text bg-secondary active:scale-95 transition-transform duration-100"
+            className="w-9/12 h-14 flex items-center justify-center gap-x-2.5 rounded-3xl border-secondary font-playfair font-bold text-text bg-secondary active:scale-95 transition-transform duration-100 md:w-[70%] md:h-21 md:gap-x-4 md:rounded-4xl md:text-2xl"
             disabled={isLoading}
           >
-            <img src={sendButtonIcon} alt="" className="size-5 md:size-7" />E N
+            <img src={sendButtonIcon} alt="" className="size-5 md:size-8" />E N
             V I A R
           </button>
         </div>

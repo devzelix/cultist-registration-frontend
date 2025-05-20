@@ -8,7 +8,6 @@ interface SelectProps {
   defaultOption: string;
   options: Option[] | undefined;
   disabled?: boolean;
-  width: string;
   error: string;
   value: string;
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
@@ -22,7 +21,6 @@ export default function Select({
   defaultOption,
   options,
   disabled,
-  width,
   error,
   value,
   onChange,
@@ -30,10 +28,10 @@ export default function Select({
 }: SelectProps) {
   return (
     <>
-      <div className={`${width} flex flex-col gap-y-2 md:w-[48%]`}>
+      <div className="flex flex-col gap-y-2 md:gap-y-3">
         <label
           htmlFor={id}
-          className="font-inter font-medium text-text md:text-xl"
+          className="font-inter font-medium text-text md:text-2xl"
         >
           {label}
         </label>
@@ -41,13 +39,13 @@ export default function Select({
           <select
             name={name}
             id={id}
-            className={`h-11 pt-2 pb-2 pl-2.5 border-2 rounded-xl ${
+            className={`w-full h-11 pl-2 border-2 rounded-xl ${
               error !== ""
                 ? "border-error outline-error"
                 : " border-input outline-input"
-            } bg-input outline-[0.05px] font-inter font-normal focus:outline-[2.85px] focus:outline-secondary focus:border-secondary ${
+            } bg-input font-inter font-normal focus:outline-[2.85px] focus:outline-secondary focus:border-secondary ${
               value === "0" ? "text-placeholder" : "text-tertiary"
-            } md:h-13 md:border-3 md:rounded-2xl md:text-lg`}
+            } md:h-16 md:pl-3 md:border-4 md:rounded-2xl md:text-2xl md:focus:outline-[3.25px]`}
             disabled={typeof disabled === "undefined" ? false : disabled}
             value={value}
             onChange={onChange}
@@ -69,7 +67,7 @@ export default function Select({
           </select>
           <p
             id={`${id}Error`}
-            className="absolute -bottom-6 left-1 font-inter font-medium text-sm text-error md:text-[0.97rem] md:-bottom-[1.8rem]"
+            className="absolute -bottom-6 left-1 font-inter font-medium text-sm text-error md:-bottom-8 md:text-xl"
           >
             {error}
           </p>

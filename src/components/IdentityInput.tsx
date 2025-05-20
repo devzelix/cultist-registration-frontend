@@ -36,10 +36,10 @@ export default function IdentityInput({
 }: IdentityInputProps) {
   return (
     <>
-      <div className="w-full flex flex-col gap-y-2 md:gap-y-3">
+      <div className="w-full flex flex-col gap-y-2 md:gap-y-3 xl:w-[46%] xl:gap-y-4">
         <label
           htmlFor={idSelect}
-          className="font-inter font-medium text-text md:text-2xl"
+          className="font-inter font-medium text-text md:text-2xl xl:text-3xl"
         >
           {labelInput}
         </label>

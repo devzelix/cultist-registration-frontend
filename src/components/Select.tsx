@@ -28,10 +28,10 @@ export default function Select({
 }: SelectProps) {
   return (
     <>
-      <div className="flex flex-col gap-y-2 md:gap-y-3">
+      <div className="w-full flex flex-col gap-y-2 md:gap-y-3 xl:gap-y-4 xl:w-[46%]">
         <label
           htmlFor={id}
-          className="font-inter font-medium text-text md:text-2xl"
+          className="font-inter font-medium text-text md:text-2xl xl:text-3xl"
         >
           {label}
         </label>
@@ -39,7 +39,7 @@ export default function Select({
           <select
             name={name}
             id={id}
-            className={`w-full h-11 pl-2 border-2 rounded-xl ${
+            className={` h-11 pl-2 border-2 rounded-xl ${
               error !== ""
                 ? "border-error outline-error"
                 : " border-input outline-input"

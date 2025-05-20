@@ -8,7 +8,7 @@ export default function validateDescriptionField<K extends keyof FormValues>(
   const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s.,'-]{2,100}$/;
 
   if (!value) {
-    if (key === "groupName") return "¡ Nombre de Agrupación requerido !";
+    if (key === "groupName") return "";
     if (key === "disability") return "¡ Discapacidad requerida !";
     if (key === "illness") return "¡ Enfermedad requerida !";
   }

@@ -31,15 +31,15 @@ export default function ConditionalInput({
 }: ConditionalInputProps) {
   return (
     <>
-      <div className="flex flex-col gap-y-2 md:gap-y-3.5">
+      <div className="w-full flex flex-col gap-y-2 md:gap-y-3.5 xl:w-[46%]">
         <label
           htmlFor=""
-          className="font-inter font-medium text-text md:text-2xl"
+          className="font-inter font-medium text-text md:text-2xl xl:text-3xl"
         >
           {label}
         </label>
         <div className="flex justify-between gap-x-3 md:gap-x-3">
-          <div className="w-1/4 flex justify-around gap-x-2 md:gap-x-1">
+          <div className="w-1/4 flex justify-around gap-x-2 md:gap-x-1 xl:gap-x-3">
             <div className="width-[45%] flex items-center gap-x-0.5 md:gap-x-2">
               <label
                 htmlFor={`${groupName}-yes`}

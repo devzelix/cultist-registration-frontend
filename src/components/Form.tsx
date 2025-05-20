@@ -12,6 +12,7 @@ import phoneInputIcon from "../assets/images/phone-input-icon.webp";
 import emailInputIcon from "../assets/images/email-input-icon.webp";
 import instagramInputIcon from "../assets/images/instagram-input-icon.webp";
 import homeAddressInputIcon from "../assets/images/home-address-input-icon.webp";
+import groupNameInputIcon from "../assets/images/group-name-input-icon.webp";
 import disabilityTypeInputIcon from "../assets/images/disability-type-input-icon.webp";
 import illnessDetailsInputIcon from "../assets/images/illness-details-input-icon.webp";
 import sendButtonIcon from "../assets/images/send-button-icon.webp";
@@ -46,20 +47,20 @@ export default function Form({
   return (
     <>
       <form
-        className="flex flex-col gap-y-7 md:gap-y-10"
+        className="flex flex-col gap-y-7 md:gap-y-10 xl:gap-y-15"
         onSubmit={handleSubmit}
       >
         <div className="w-full flex justify-between">
-          <img src={logo1} className="size-25 md:size-40" />
-          <img src={logo2} className="size-25 md:size-40" />
+          <img src={logo1} className="size-25 md:size-40 xl:size-44" />
+          <img src={logo2} className="size-25 md:size-40 xl:size-44" />
         </div>
-        <p className="mb-2 text-3xl font-playfair font-bold text-center text-[#f3f3f3] md:mb-4 md:text-5xl">
+        <p className="mb-2 text-3xl font-playfair font-bold text-center text-[#f3f3f3] md:mb-4 md:text-5xl xl:mb-13 xl:text-6xl">
           Formulario de Registro
         </p>
-        <div className="w-full flex flex-col justify-between gap-y-12 md:gap-y-18">
+        <div className="w-full flex flex-col justify-between gap-y-12 md:gap-y-18 xl:flex-row xl:flex-wrap">
           <Input
             type="text"
-            placeholder="Ej. José Ángel"
+            placeholder="Ej. María Fernanda"
             id="firstName"
             name="firstName"
             label="Nombres"
@@ -71,7 +72,7 @@ export default function Form({
           />
           <Input
             type="text"
-            placeholder="Ej. Solett Bustamante"
+            placeholder="Ej. Pérez Torres"
             id="lastName"
             name="lastName"
             label="Apellidos"
@@ -88,7 +89,7 @@ export default function Form({
             nameInput="idNumber"
             labelSelect="nacionalidad"
             labelInput="Cédula de identidad"
-            placeholder="Ej. 31456615"
+            placeholder="Ej. 12345678"
             options={nationalityOptions}
             icon={idInputIcon}
             error={formErrors.idNumberError}
@@ -116,7 +117,7 @@ export default function Form({
             nameInput="phoneNumber"
             labelSelect="prefijo del teléfono"
             labelInput="Número de Teléfono"
-            placeholder="Ej. 4125472"
+            placeholder="Ej. 1234567"
             options={phonePrefixOptions}
             icon={phoneInputIcon}
             error={formErrors.phoneNumberError}
@@ -127,7 +128,7 @@ export default function Form({
           />
           <Input
             type="email"
-            placeholder="Ej. ejemplo@email.com"
+            placeholder="Ej. mariaperez@email.com"
             id="email"
             name="email"
             label="Correo Electrónico"
@@ -139,7 +140,7 @@ export default function Form({
           />
           <Input
             type="text"
-            placeholder="Ej. josesolett"
+            placeholder="Ej. mariaartista"
             id="instagramUser"
             name="instagramUser"
             label="Usuario de Instagram"
@@ -174,7 +175,7 @@ export default function Form({
           />
           <Input
             type="text"
-            placeholder="Ej. urb. Llano Verde, edificio 3"
+            placeholder="Ej. Calle 10, Casa 12, El Centro"
             id="homeAddress"
             name="homeAddress"
             label="Dirección de Habitación"
@@ -221,11 +222,11 @@ export default function Form({
           />
           <Input
             type="text"
-            placeholder="Ej. Gota Dulce Teatro"
+            placeholder="Ej. Grupo Cultural El Alba"
             id="groupName"
             name="groupName"
             label="Nombre de Agrupación"
-            icon={homeAddressInputIcon}
+            icon={groupNameInputIcon}
             error={formErrors.groupNameError}
             value={formValues.groupName}
             onChange={handleChange}
@@ -260,10 +261,10 @@ export default function Form({
             onBlur={handleBlur}
           />
         </div>
-        <div className="flex mt-7 items-center justify-center md:mt-9">
+        <div className="flex mt-7 items-center justify-center md:mt-9 xl:mt-15">
           <button
             type="submit"
-            className="w-9/12 h-14 flex items-center justify-center gap-x-2.5 rounded-3xl border-secondary font-playfair font-bold text-text bg-secondary active:scale-95 transition-transform duration-100 md:w-[70%] md:h-21 md:gap-x-4 md:rounded-4xl md:text-2xl"
+            className="w-9/12 h-14 flex items-center justify-center gap-x-2.5 rounded-3xl border-secondary font-playfair font-bold text-text bg-secondary active:scale-95 transition-transform duration-100 md:w-[70%] md:h-21 md:gap-x-4 md:rounded-4xl md:text-2xl xl:w-1/2"
             disabled={isLoading}
           >
             <img src={sendButtonIcon} alt="" className="size-5 md:size-8" />E N

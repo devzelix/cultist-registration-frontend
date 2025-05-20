@@ -22,7 +22,7 @@ export default function App() {
           isDisabled={isStatusConflict}
         />
       )}
-      <main className="w-full pt-9 pr-1 pb-10 pl-1 flex items-center justify-center bg-primary md:pt-15 md:pr-3 md:pb-17 md:pl-3">
+      <main className="w-full pt-9 pr-1 pb-10 pl-1 flex items-center justify-center bg-primary md:pt-15 md:pr-3 md:pb-17 md:pl-3 xl:pt-25 xl:pb-28">
         <CultorForm
           setIsStatusConflict={setIsStatusConflict}
           setMessageConflict={setMessageConflict}

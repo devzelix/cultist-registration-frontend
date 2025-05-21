@@ -10,7 +10,7 @@ export default function formatRequest(formValues: FormValues) {
       formValues.nationality.trim().toUpperCase() +
       "-" +
       formValues.idNumber.trim(),
-    birthDate: formatDate(new Date(formValues.birthDate.trim())),
+    birthDate: formatDate(formValues.birthDate),
     phoneNumber:
       formValues.phonePrefix.trim() + "-" + formValues.phoneNumber.trim(),
     email: formValues.email.trim().toLowerCase(),

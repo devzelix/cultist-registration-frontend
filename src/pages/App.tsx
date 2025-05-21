@@ -1,7 +1,7 @@
 import facebook from "../assets/images/facebook-icon.webp";
 import instagram from "../assets/images/instagram-icon.webp";
 import web from "../assets/images/web-icon.webp";
-import CultorForm from "../components/CultorRegistrationPanel";
+import CultorRegistrationPanel from "../components/CultorRegistrationPanel";
 import DuplicateEntryModal from "../components/DuplicateEntryModal";
 import useModal from "../hooks/useModal";
 
@@ -23,7 +23,7 @@ export default function App() {
         />
       )}
       <main className="w-full pt-9 pr-1 pb-10 pl-1 flex items-center justify-center bg-primary md:pt-15 md:pr-3 md:pb-17 md:pl-3 xl:pt-25 xl:pb-28">
-        <CultorForm
+        <CultorRegistrationPanel
           setIsStatusConflict={setIsStatusConflict}
           setMessageConflict={setMessageConflict}
         />

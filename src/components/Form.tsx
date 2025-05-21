@@ -18,6 +18,7 @@ import illnessDetailsInputIcon from "../assets/images/illness-details-input-icon
 import sendButtonIcon from "../assets/images/send-button-icon.webp";
 import type { FormErrors, FormValues, Option } from "../utils/interfaces";
 import type { ChangeEvent, FocusEvent, FormEvent } from "react";
+import usePreventUnload from "../hooks/usePreventUnload";
 
 interface FormProps {
   formValues: FormValues;
@@ -44,6 +45,11 @@ export default function Form({
   handleSubmit,
   isLoading,
 }: FormProps) {
+  const shouldPreventUnload = Object.values(formValues).some(
+    (value) => value !== ""
+  );
+  usePreventUnload(shouldPreventUnload);
+
   return (
     <>
       <form

@@ -22,6 +22,7 @@ export default function validateFields<K extends keyof FormValues>(
   if (key === "email") return validateEmail(value);
   if (key === "instagramUser") return validateInstagramUser(value);
   if (
+    key === "gender" ||
     key === "municipalityId" ||
     key === "parishId" ||
     key === "artCategoryId" ||
@@ -32,6 +33,6 @@ export default function validateFields<K extends keyof FormValues>(
   if (key === "yearsOfExperience") return validateYearsOfExperience(value);
   if (key === "disability" || key === "illness" || key === "groupName")
     return validateDescriptionField(key, value);
-  if (!value) return "Campo obligatorio";
+  if (!value) return "¡ Campo Obligatorio !";
   return "";
 }

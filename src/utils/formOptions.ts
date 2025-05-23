@@ -1,5 +1,10 @@
 import { type Option } from "./interfaces";
 
+export const genderOptions: Option[] = [
+  { key: 1, value: "F", option: "Femenenino" },
+  { key: 2, value: "M", option: "Masculino" },
+];
+
 export const nationalityOptions: Option[] = [
   { key: 1, value: "V", option: "V" },
   { key: 2, value: "E", option: "E" },

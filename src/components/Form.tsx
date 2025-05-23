@@ -2,10 +2,14 @@ import Input from "./Input";
 import IdentityInput from "./IdentityInput";
 import Select from "./Select";
 import ConditionalInput from "./ConditionalInput";
-import { nationalityOptions, phonePrefixOptions } from "../utils/formOptions";
+import {
+  genderOptions,
+  nationalityOptions,
+  phonePrefixOptions,
+} from "../utils/formOptions";
 import { getMinBirthDate, getMaxBirthDate } from "../utils/birthDateRange";
-import logo1 from "../assets/images/logo-1.png";
-import logo2 from "../assets/images/logo-2.png";
+import logo1 from "../assets/images/logo-1.webp";
+import logo2 from "../assets/images/logo-2.webp";
 import userInputIcon from "../assets/images/user-input-icon.webp";
 import idInputIcon from "../assets/images/id-input-icon.webp";
 import phoneInputIcon from "../assets/images/phone-input-icon.webp";
@@ -85,6 +89,17 @@ export default function Form({
             icon={userInputIcon}
             error={formErrors.lastNameError}
             value={formValues.lastName}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          <Select
+            id="gender"
+            name="gender"
+            label="Género"
+            defaultOption="Seleccione su género..."
+            options={genderOptions}
+            error={formErrors.genderError}
+            value={formValues.gender}
             onChange={handleChange}
             onBlur={handleBlur}
           />

@@ -13,6 +13,7 @@ export interface Option {
 export interface FormValues {
   firstName: string; // User's first name.
   lastName: string; // User's last name.
+  gender: string;
   nationality: string; // User's nationality.
   idNumber: string; // User's ID number.
   birthDate: string; // User's birth date (ISO 8601 format).
@@ -36,6 +37,7 @@ export interface FormValues {
 export interface FormErrors {
   firstNameError: string;
   lastNameError: string;
+  genderError: string;
   idNumberError: string;
   birthDateError: string;
   phoneNumberError: string;
@@ -55,6 +57,7 @@ export interface FormErrors {
 export interface RequestBody {
   firstName: string;
   lastName: string;
+  gender: string;
   idNumber: string;
   birthDate: string;
   phoneNumber: string;
@@ -75,6 +78,7 @@ export interface SuccessBody {
   id: number;
   firstName: string;
   lastName: string;
+  gender: string;
   idNumber: string;
   birthDate: Date;
   phoneNumber: string;

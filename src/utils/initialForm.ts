@@ -10,6 +10,7 @@ import type { FormErrors, FormValues } from "./interfaces";
 export const initialFormValues: FormValues = {
   firstName: "", // Default to empty string for first name.
   lastName: "", // Default to empty string for last name.
+  gender: "0",
   nationality: "V", // Default nationality set to "V".
   idNumber: "", // Default to empty string for ID number.
   birthDate: getMaxBirthDate(), // Get the maximum valid birth date from utility function.
@@ -33,6 +34,7 @@ export const initialFormValues: FormValues = {
 export const initialFormErrors: FormErrors = {
   firstNameError: "",
   lastNameError: "",
+  genderError: "",
   idNumberError: "",
   birthDateError: "",
   phoneNumberError: "",

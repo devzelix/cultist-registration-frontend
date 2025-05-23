@@ -6,6 +6,7 @@ export default function formatRequest(formValues: FormValues) {
   const body: RequestBody = {
     firstName: formatString(formValues.firstName),
     lastName: formatString(formValues.lastName),
+    gender: formValues.gender.trim().toUpperCase(),
     idNumber:
       formValues.nationality.trim().toUpperCase() +
       "-" +

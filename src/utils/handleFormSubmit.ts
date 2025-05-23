@@ -29,6 +29,7 @@ export default async function handleFormSubmit<K extends keyof FormValues>(
   const tempErrors: FormErrors = {
     firstNameError: validateName("firstName" as K, formValues.firstName),
     lastNameError: validateName("lastName" as K, formValues.lastName),
+    genderError: validateSelect("gender" as K, formValues.gender),
     idNumberError: validateIdNumber(formValues.idNumber),
     birthDateError: validateBirthDate(formValues.birthDate),
     phoneNumberError: validatePhoneNumber(formValues.phoneNumber),
@@ -92,6 +93,7 @@ export default async function handleFormSubmit<K extends keyof FormValues>(
     const errorFieldOrder: (keyof FormErrors)[] = [
       "firstNameError",
       "lastNameError",
+      "genderError",
       "idNumberError",
       "birthDateError",
       "phoneNumberError",

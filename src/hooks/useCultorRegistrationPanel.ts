@@ -18,7 +18,7 @@ import useParishesOptions from "./useParishesOptions";
 import useArtCategoriesOptions from "./useArtCategoriesOption";
 import useArtDisciplinesOptions from "./useArtDisciplinesOptions";
 
-export default function useCultorForm(
+export default function useCultoregistrationPanel(
   setIsStatusConflict: Dispatch<SetStateAction<boolean>>,
   setMessageConflict: Dispatch<SetStateAction<string>>
 ) {

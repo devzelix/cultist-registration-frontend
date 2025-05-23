@@ -5,6 +5,7 @@ export default function validateSelect<K extends keyof FormValues>(
   option: string
 ): string {
   if (option === "0") {
+    if (key === "gender") return "¡ Género requerido !";
     if (key === "municipalityId") return "¡ Municipio requerido !";
     if (key === "parishId") return "¡ Parroquia requerida !";
     if (key === "artCategoryId") return "¡ Categoría artística requerida !";

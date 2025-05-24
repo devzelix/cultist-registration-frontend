@@ -1,6 +1,6 @@
 import type { Dispatch, FormEvent, SetStateAction } from "react";
-import validateName from "./validateName";
 import type { FormErrors, FormValues } from "./interfaces";
+import validateName from "./validateName";
 import validateBirthDate from "./validateBirthDate";
 import validateIdNumber from "./validateIdNumber";
 import validatePhoneNumber from "./validatePhoneNumber";
@@ -10,10 +10,23 @@ import validateSelect from "./validateSelect";
 import validateHomeAddress from "./validateHomeAddress";
 import validateYearsOfExperience from "./validateYearsOfExperience";
 import validateDescriptionField from "./validateDescriptionField";
-import { create } from "../services/cultistService";
+import { create } from "../services/cultorService";
 import formatRequest from "./formatRequest";
 import determinateFieldConflict from "./determinateFieldConflict";
 
+/**
+ * Handles form submission: validates fields, sends data to API,
+ * manages loading, error, conflict and success states.
+ *
+ * @param e - Form submission event.
+ * @param formValues - Current values of the form fields.
+ * @param setFormErrors - Setter for form error messages.
+ * @param setIsLoading - Setter for loading state.
+ * @param setIsError - Setter for general error state.
+ * @param setIsCreated - Setter for successful creation state.
+ * @param setStatusConflict - Setter for conflict status state.
+ * @param setMessageConflict - Setter for conflict message.
+ */
 export default async function handleFormSubmit<K extends keyof FormValues>(
   e: FormEvent,
   formValues: FormValues,
@@ -26,6 +39,7 @@ export default async function handleFormSubmit<K extends keyof FormValues>(
 ) {
   e.preventDefault();
 
+  // Validate all fields and store errors.
   const tempErrors: FormErrors = {
     firstNameError: validateName("firstName" as K, formValues.firstName),
     lastNameError: validateName("lastName" as K, formValues.lastName),
@@ -68,28 +82,35 @@ export default async function handleFormSubmit<K extends keyof FormValues>(
 
   setFormErrors(tempErrors);
 
-  if (
-    !Object.values(tempErrors).some((error) => {
-      return error !== "";
-    })
-  ) {
+  // Check if any error exists.
+  const hasErrors = Object.values(tempErrors).some((error) => error !== "");
+
+  if (!hasErrors) {
+    // No validation errors, proceed with API request.
     setIsLoading(true);
     const response = await create(formatRequest(formValues));
     setIsLoading(false);
+
     if (!response) {
+      // General error handling.
       setIsError(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if ("status" in response && response.status === 409) {
+      // Conflict error handling (e.g. duplicate entries).
       setStatusConflict(true);
       setMessageConflict(determinateFieldConflict(response.error));
     } else {
+      // Successful creation.
       setIsCreated(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // Redirect after 5 seconds.
       setTimeout(() => {
         window.location.href = "http://cultura.carabobo.gob.ve/";
       }, 5000);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   } else {
+    // If errors exist, focus the first invalid field.
     const errorFieldOrder: (keyof FormErrors)[] = [
       "firstNameError",
       "lastNameError",
@@ -116,7 +137,7 @@ export default async function handleFormSubmit<K extends keyof FormValues>(
         const field = document.querySelector(
           `[name="${inputName}"]`
         ) as HTMLElement;
-        field.focus();
+        if (field) field.focus();
         break;
       }
     }

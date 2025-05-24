@@ -1,3 +1,12 @@
+/**
+ * Validates a phone number.
+ * - Trims whitespace.
+ * - Requires exactly 7 digits.
+ * - Disallows all digits being the same.
+ *
+ * @param phoneNumber - The phone number string to validate.
+ * @returns Error message if invalid, or empty string if valid.
+ */
 export default function validatePhoneNumber(phoneNumber: string): string {
   phoneNumber = phoneNumber.trim();
 

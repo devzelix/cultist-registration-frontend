@@ -2,25 +2,29 @@ import { useEffect, type Dispatch, type SetStateAction } from "react";
 import type { FormErrors, FormValues } from "../utils/interfaces";
 
 /**
- * Custom hook to reset a form field when the value of a dependent field changes.
+ * Custom hook to reset a form field and its error when a dependent value changes.
  *
- * @param dependsOnValue - The value that triggers the field reset.
- * @param setFormValues - The function to update the form state.
- * @param fieldToReset - The form field to reset when the dependent value changes.
+ * @param dependsOnValue - The value that triggers the reset effect.
+ * @param setFormValues - State setter for updating form values.
+ * @param setFormErrors - State setter for clearing form errors.
+ * @param fieldToReset - The specific form field to reset.
+ * @param fieldErrorToReset - The corresponding error field to reset.
  */
 export default function useRestartConditionalInput(
   dependsOnValue: string,
   setFormValues: Dispatch<SetStateAction<FormValues>>,
   setFormErrors: Dispatch<SetStateAction<FormErrors>>,
-  fieldToReset: keyof FormValues, // Improved typing for better safety
+  fieldToReset: keyof FormValues,
   fieldErrorToReset: keyof FormErrors
 ) {
   useEffect(() => {
-    // Resets the field to an empty string whenever the 'dependsOnValue' changes
+    // Reset the target form field to an empty string
     setFormValues((prev) => ({
       ...prev,
       [fieldToReset]: "",
     }));
+
+    // Clear the related error message for the field
     setFormErrors((prev) => ({
       ...prev,
       [fieldErrorToReset]: "",
@@ -31,5 +35,5 @@ export default function useRestartConditionalInput(
     fieldToReset,
     setFormErrors,
     fieldErrorToReset,
-  ]); // Effect depends on 'dependsOnValue'
+  ]); // Trigger effect whenever dependsOnValue changes
 }

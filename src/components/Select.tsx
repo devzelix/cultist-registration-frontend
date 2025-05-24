@@ -1,6 +1,7 @@
 import type { ChangeEvent, FocusEvent } from "react";
 import type { Option } from "../utils/interfaces";
 
+// Props definition for type safety and clarity
 interface SelectProps {
   id: string;
   name: string;
@@ -28,14 +29,18 @@ export default function Select({
 }: SelectProps) {
   return (
     <>
+      {/* Container with responsive spacing */}
       <div className="w-full flex flex-col gap-y-2 md:gap-y-3 xl:gap-y-4 xl:w-[46%]">
+        {/* Accessible label linked to the select by id */}
         <label
           htmlFor={id}
           className="font-inter font-medium text-text md:text-2xl xl:text-3xl"
         >
           {label}
         </label>
+
         <div className="relative flex flex-col gap-y-0.5">
+          {/* Select input with conditional styles for error and value state */}
           <select
             name={name}
             id={id}
@@ -51,9 +56,12 @@ export default function Select({
             onChange={onChange}
             onBlur={onBlur}
           >
+            {/* Default placeholder option */}
             <option value="0" className="text-placeholder" disabled>
               {defaultOption}
             </option>
+
+            {/* Dynamically render select options */}
             {options &&
               options.map((option) => (
                 <option
@@ -65,6 +73,8 @@ export default function Select({
                 </option>
               ))}
           </select>
+
+          {/* Error message display */}
           <p
             id={`${id}Error`}
             className="absolute -bottom-6 left-1 font-inter font-medium text-sm text-error md:-bottom-8 md:text-xl"

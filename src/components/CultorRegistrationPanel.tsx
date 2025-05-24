@@ -6,6 +6,7 @@ import ServerErrorMessage from "./ServerErrorMessage";
 import type { Dispatch, SetStateAction } from "react";
 import useCultoregistrationPanel from "../hooks/useCultorRegistrationPanel";
 
+// Props definition for type safety and clarity
 interface CultorRegistrationPanelProps {
   setIsStatusConflict: Dispatch<SetStateAction<boolean>>;
   setMessageConflict: Dispatch<SetStateAction<string>>;
@@ -15,6 +16,7 @@ export default function CultorRegistrationPanel({
   setIsStatusConflict,
   setMessageConflict,
 }: CultorRegistrationPanelProps) {
+  // Custom hook managing form state, validation, options, and submission logic
   const {
     formValues,
     formErrors,
@@ -32,6 +34,7 @@ export default function CultorRegistrationPanel({
 
   return (
     <>
+      {/* Container with dynamic padding and height based on loading and status */}
       <div
         className={`w-full ${
           isLoading || isStatusError || isStatusCreated
@@ -39,9 +42,16 @@ export default function CultorRegistrationPanel({
             : "pt-10 pr-3 pb-15 pl-3 md:pt-13 md:pr-10 md:pb-18 md:pl-10 xl:pt-18 xl:pr-15 xl:pb-22 xl:pl-15"
         } rounded-4xl bg-[#f3f3f3]/5 backdrop-blur-xs shadow-2xl md:rounded-[2.25rem] xl:w-[85%] xl:rounded-[2.5rem]`}
       >
+        {/* Show loader while submitting */}
         {isLoading && <Loader />}
+
+        {/* Show error message if server error occurs */}
         {isStatusError && <ServerErrorMessage />}
+
+        {/* Show success message after successful submission */}
         {isStatusCreated && <SuccessRegistrationMessage />}
+
+        {/* Show form when not loading, error, or success */}
         {!isLoading && !isStatusError && !isStatusCreated && (
           <Form
             formValues={formValues}

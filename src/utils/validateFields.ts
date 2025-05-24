@@ -10,6 +10,14 @@ import validatePhoneNumber from "./validatePhoneNumber";
 import validateSelect from "./validateSelect";
 import validateYearsOfExperience from "./validateYearsOfExperience";
 
+/**
+ * Validates a form field based on its key and value.
+ * Calls the appropriate validation function for each field.
+ *
+ * @param key - The form field key.
+ * @param value - The value to validate.
+ * @returns An error message if invalid, or an empty string if valid.
+ */
 export default function validateFields<K extends keyof FormValues>(
   key: K,
   value: string
@@ -33,6 +41,7 @@ export default function validateFields<K extends keyof FormValues>(
   if (key === "yearsOfExperience") return validateYearsOfExperience(value);
   if (key === "disability" || key === "illness" || key === "groupName")
     return validateDescriptionField(key, value);
+
   if (!value) return "¡ Campo Obligatorio !";
   return "";
 }

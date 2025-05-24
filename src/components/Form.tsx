@@ -24,6 +24,7 @@ import type { FormErrors, FormValues, Option } from "../utils/interfaces";
 import type { ChangeEvent, FocusEvent, FormEvent } from "react";
 import usePreventUnload from "../hooks/usePreventUnload";
 
+// Props definition for type safety and clarity
 interface FormProps {
   formValues: FormValues;
   formErrors: FormErrors;
@@ -49,6 +50,7 @@ export default function Form({
   handleSubmit,
   isLoading,
 }: FormProps) {
+  // Prevent page unload if form has any input filled
   const shouldPreventUnload = Object.values(formValues).some(
     (value) => value !== ""
   );
@@ -60,14 +62,20 @@ export default function Form({
         className="flex flex-col gap-y-7 md:gap-y-10 xl:gap-y-15"
         onSubmit={handleSubmit}
       >
+        {/* Logos header */}
         <div className="w-full flex justify-between">
           <img src={logo1} className="size-25 md:size-40 xl:size-44" />
           <img src={logo2} className="size-25 md:size-40 xl:size-44" />
         </div>
+
+        {/* Form title */}
         <p className="mb-2 text-3xl font-playfair font-bold text-center text-[#f3f3f3] md:mb-4 md:text-5xl xl:mb-13 xl:text-6xl">
           Formulario de Registro
         </p>
+
+        {/* Form fields container */}
         <div className="w-full flex flex-col justify-between gap-y-12 md:gap-y-18 xl:flex-row xl:flex-wrap">
+          {/* Text inputs */}
           <Input
             type="text"
             placeholder="Ej. María Fernanda"
@@ -92,6 +100,8 @@ export default function Form({
             onChange={handleChange}
             onBlur={handleBlur}
           />
+
+          {/* Select dropdowns */}
           <Select
             id="gender"
             name="gender"
@@ -103,6 +113,8 @@ export default function Form({
             onChange={handleChange}
             onBlur={handleBlur}
           />
+
+          {/* Identity input with select + text */}
           <IdentityInput
             idSelect="nationality"
             nameSelect="nationality"
@@ -119,6 +131,8 @@ export default function Form({
             onChange={handleChange}
             onBlur={handleBlur}
           />
+
+          {/* Date input with min/max */}
           <Input
             type="date"
             min={getMinBirthDate()}
@@ -131,6 +145,8 @@ export default function Form({
             onChange={handleChange}
             onBlur={handleBlur}
           />
+
+          {/* Phone input with prefix */}
           <IdentityInput
             idSelect="phonePrefix"
             nameSelect="phonePrefix"
@@ -147,6 +163,8 @@ export default function Form({
             onChange={handleChange}
             onBlur={handleBlur}
           />
+
+          {/* Email input */}
           <Input
             type="email"
             placeholder="Ej. mariaperez@email.com"
@@ -159,6 +177,8 @@ export default function Form({
             onChange={handleChange}
             onBlur={handleBlur}
           />
+
+          {/* Instagram username */}
           <Input
             type="text"
             placeholder="Ej. mariaartista"
@@ -171,6 +191,8 @@ export default function Form({
             onChange={handleChange}
             onBlur={handleBlur}
           />
+
+          {/* Location select inputs */}
           <Select
             id="municipalityId"
             name="municipalityId"
@@ -194,6 +216,8 @@ export default function Form({
             onChange={handleChange}
             onBlur={handleBlur}
           />
+
+          {/* Address input */}
           <Input
             type="text"
             placeholder="Ej. Calle 10, Casa 12, El Centro"
@@ -206,6 +230,8 @@ export default function Form({
             onChange={handleChange}
             onBlur={handleBlur}
           />
+
+          {/* Art category and discipline selects */}
           <Select
             id="artCategoryId"
             name="artCategoryId"
@@ -229,6 +255,8 @@ export default function Form({
             onChange={handleChange}
             onBlur={handleBlur}
           />
+
+          {/* Numeric input for years of experience */}
           <Input
             type="number"
             min="1"
@@ -241,6 +269,8 @@ export default function Form({
             onChange={handleChange}
             onBlur={handleBlur}
           />
+
+          {/* Group name input */}
           <Input
             type="text"
             placeholder="Ej. Grupo Cultural El Alba"
@@ -253,13 +283,15 @@ export default function Form({
             onChange={handleChange}
             onBlur={handleBlur}
           />
+
+          {/* Conditional inputs: disability and illness */}
           <ConditionalInput
             groupName="hasDisability"
             label="¿Tiene alguna discapacidad?"
             idInput="disability"
             nameInput="disability"
             placeholder="Ingrese su discapacidad..."
-            disabled={formValues.hasDisability === "yes" ? false : true}
+            disabled={formValues.hasDisability !== "yes"}
             icon={disabilityTypeInputIcon}
             error={formErrors.disabilityError}
             groupValue={formValues.hasDisability}
@@ -273,7 +305,7 @@ export default function Form({
             idInput="illness"
             nameInput="illness"
             placeholder="Ingrese la enfermedad..."
-            disabled={formValues.hasIllness === "yes" ? false : true}
+            disabled={formValues.hasIllness !== "yes"}
             icon={illnessDetailsInputIcon}
             error={formErrors.illnessError}
             groupValue={formValues.hasIllness}
@@ -282,6 +314,8 @@ export default function Form({
             onBlur={handleBlur}
           />
         </div>
+
+        {/* Submit button */}
         <div className="flex mt-7 items-center justify-center md:mt-9 xl:mt-15">
           <button
             type="submit"

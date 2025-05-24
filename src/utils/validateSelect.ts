@@ -1,5 +1,12 @@
 import type { FormValues } from "./interfaces";
 
+/**
+ * Validates select inputs by checking if the selected option is not the default ("0").
+ *
+ * @param key - The form field key being validated.
+ * @param option - The selected option value.
+ * @returns Error message if the selection is invalid, otherwise an empty string.
+ */
 export default function validateSelect<K extends keyof FormValues>(
   key: K,
   option: string

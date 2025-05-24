@@ -3,13 +3,13 @@ import type { Option } from "../utils/interfaces";
 import type { FormValues } from "../utils/interfaces";
 
 /**
- * Custom hook to manage options that depend on a value and reset a form field.
+ * Custom hook to manage dependent options and reset a related form field.
  *
- * @param optionsMap - A map of options for each dependent value.
- * @param dependsOnValue - The value that determines which options should be displayed.
- * @param setFormValues - The function to update the form state.
- * @param fieldToReset - The form field to reset when the dependent value changes.
- * @returns availableOptions - The options to be displayed based on the 'dependsOnValue'.
+ * @param optionsMap - A record mapping keys to arrays of options.
+ * @param dependsOnValue - The current value that determines which options to display.
+ * @param setFormValues - Setter function to update the form values state.
+ * @param fieldToReset - The specific form field to reset when 'dependsOnValue' changes.
+ * @returns The list of available options corresponding to 'dependsOnValue'.
  */
 export default function useDependentOptions(
   optionsMap: Record<string, Option[]>,
@@ -17,12 +17,12 @@ export default function useDependentOptions(
   setFormValues: Dispatch<SetStateAction<FormValues>>,
   fieldToReset: keyof FormValues
 ) {
-  // Memoizes the available options based on 'dependsOnValue'.
+  // Compute and memoize available options based on the current dependent value.
   const availableOptions = useMemo(() => {
     return optionsMap[dependsOnValue] ?? [];
   }, [optionsMap, dependsOnValue]);
 
-  // Resets the field to "0" every time the dependent value changes.
+  // Reset the targeted form field to "0" whenever the dependent value updates.
   useEffect(() => {
     setFormValues((prev) => ({
       ...prev,

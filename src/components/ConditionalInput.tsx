@@ -1,5 +1,6 @@
 import type { ChangeEvent, FocusEvent } from "react";
 
+// Props definition for type safety and clarity
 interface ConditionalInputProps {
   groupName: string;
   label: string;
@@ -32,14 +33,18 @@ export default function ConditionalInput({
   return (
     <>
       <div className="w-full flex flex-col gap-y-2 md:gap-y-3.5 xl:w-[46%]">
+        {/* Label for the entire input group */}
         <label
           htmlFor=""
           className="font-inter font-medium text-text md:text-2xl xl:text-3xl"
         >
           {label}
         </label>
+
         <div className="flex justify-between gap-x-3 md:gap-x-3">
+          {/* Radio buttons group */}
           <div className="w-1/4 flex justify-around gap-x-2 md:gap-x-1 xl:gap-x-3">
+            {/* "Yes" radio button */}
             <div className="width-[45%] flex items-center gap-x-0.5 md:gap-x-2">
               <label
                 htmlFor={`${groupName}-yes`}
@@ -57,6 +62,8 @@ export default function ConditionalInput({
                 className="md:size-4"
               />
             </div>
+
+            {/* "No" radio button */}
             <div className="width-[45%] flex items-center gap-x-0.5 md:gap-x-2">
               <label
                 htmlFor={`${groupName}-no`}
@@ -75,6 +82,8 @@ export default function ConditionalInput({
               />
             </div>
           </div>
+
+          {/* Text input field */}
           <div className="relative w-[73%]">
             <input
               type="text"
@@ -91,11 +100,15 @@ export default function ConditionalInput({
               onChange={onChange}
               onBlur={onBlur}
             />
+
+            {/* Icon inside the input */}
             <img
               src={icon}
               alt=""
               className="absolute right-3 top-1/2 transform -translate-y-1/2 size-5 md:right-5 md:top-1/2 md:size-7"
             />
+
+            {/* Error message below input */}
             <p
               id={`${idInput}Error`}
               className="absolute -bottom-5 left-1 font-inter font-medium text-sm text-error md:-bottom-8 md:text-xl"

@@ -1,5 +1,6 @@
 import type { ChangeEvent, FocusEvent } from "react";
 
+// Props definition for type safety and clarity
 interface InputProps {
   type: string;
   placeholder?: string;
@@ -32,12 +33,14 @@ export default function Input({
   return (
     <>
       <div className="w-full flex flex-col gap-y-2 md:gap-y-3 xl:w-[46%] xl:gap-y-4">
+        {/* Accessible label for the input */}
         <label
           htmlFor={id}
           className="font-inter font-medium text-text md:text-2xl xl:text-3xl"
         >
           {label}
         </label>
+
         <div className="relative">
           <input
             type={type}
@@ -59,14 +62,17 @@ export default function Input({
             onChange={onChange}
             onBlur={onBlur}
           />
+
+          {/* Optional icon */}
           {icon && (
             <img
               src={icon}
-              alt=""
+              alt="" // Decorative
               className="absolute right-3 top-1/2 transform -translate-y-1/2 size-5 md:right-5 md:top-1/2 md:size-7"
             />
           )}
 
+          {/* Error message */}
           {error && (
             <p
               id={`${id}Error`}

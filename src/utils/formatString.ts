@@ -1,11 +1,15 @@
-export default function formatString(text: string) {
-  const splicedText: string[] = text.trim().split(" ");
-  let formatText = "";
-  for (const sliceText of splicedText) {
-    formatText +=
-      sliceText.substring(0, 1).toUpperCase() +
-      sliceText.substring(1).toLowerCase() +
-      " ";
-  }
-  return formatText.substring(0, formatText.length - 1);
+/**
+ * Formats a string so that each word starts with an uppercase letter followed by lowercase letters.
+ *
+ * This ensures consistent casing for user inputs like names or addresses.
+ *
+ * @param text - The raw input string to format.
+ * @returns A properly capitalized string.
+ */
+export default function formatString(text: string): string {
+  const words = text.trim().split(" ");
+  const formattedWords = words.map(
+    (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+  );
+  return formattedWords.join(" ");
 }

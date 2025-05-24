@@ -1,15 +1,24 @@
 import { type Option } from "./interfaces";
 
+/**
+ * Gender options used in the form select input.
+ */
 export const genderOptions: Option[] = [
-  { key: 1, value: "F", option: "Femenenino" },
+  { key: 1, value: "F", option: "Femenino" },
   { key: 2, value: "M", option: "Masculino" },
 ];
 
+/**
+ * Nationality options used for ID prefix selection.
+ */
 export const nationalityOptions: Option[] = [
   { key: 1, value: "V", option: "V" },
   { key: 2, value: "E", option: "E" },
 ];
 
+/**
+ * Phone prefix options used in the form select input.
+ */
 export const phonePrefixOptions: Option[] = [
   { key: 1, value: "0412", option: "0412" },
   { key: 2, value: "0414", option: "0414" },

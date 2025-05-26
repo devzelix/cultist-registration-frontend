@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
-import App from "./pages/App";
 import "./styles/global.css";
+import App from "./App";
 
 const ROOT = createRoot(document.getElementById("root") as HTMLElement); // Create React root
 

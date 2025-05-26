@@ -20,10 +20,11 @@ Built with React and TypeScript, using TailwindCSS for styling and custom valida
 - Vite (assumed from structure and use of `/src/main.tsx`)
 - Custom CSS for fonts and theme setup
 - Custom hooks for state management and modals
+- React Router DOM v6+
 
 ## 🗂️ Project Structure
 
-- `/src/pages/App.tsx`: Main component containing overall structure and child components.
+- `/src/pages/App.tsx`: Main component responsible for routing and layout, distributing pages via `react-router-dom`.
 - `/src/components/`: Reusable components such as forms, modals, etc.
 - `/src/hooks/useModal.ts`: Hook for managing modals and conflict states.
 - `/src/validations/`: Validation functions for form fields (name, email, phone, date, etc.).

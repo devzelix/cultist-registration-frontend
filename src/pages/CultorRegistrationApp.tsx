@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import facebook from "../assets/images/facebook-icon.webp";
 import instagram from "../assets/images/instagram-icon.webp";
 import web from "../assets/images/web-icon.webp";
@@ -13,7 +14,11 @@ import useModal from "../hooks/useModal";
  * - The cultor registration panel.
  * - The footer with social media and website links.
  */
-export default function App() {
+export default function CultorRegistrationApp() {
+  useEffect(() => {
+    document.title = "Registro de Cultores - Secretaría de Cultura de Carabobo";
+  }, []);
+
   // Custom hook to manage the state of the conflict modal
   const {
     isStatusConflict,

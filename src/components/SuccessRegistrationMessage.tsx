@@ -24,7 +24,7 @@ export default function SuccessRegistrationMessage() {
         </p>
 
         {/* Visual progress indicator */}
-        <span className="w-full h-3 redirecting"></span>
+        <span className="w-full h-3 redirecting-home"></span>
       </div>
     </>
   );

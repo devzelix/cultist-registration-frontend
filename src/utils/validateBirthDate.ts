@@ -1,4 +1,4 @@
-import { getMaxBirthDate, getMinBirthDate } from "./birthDateRange";
+import { getMaximumBirthDate, getMinimumBirthDate } from "./birthDateRange";
 
 /**
  * Validates the birth date string.
@@ -18,10 +18,14 @@ export default function validateBirthDate(birthDate: string): string {
   const [year, month, day] = birthDate.split("-").map(Number);
   const date = new Date(year, month - 1, day);
 
-  const [yearMax, monthMax, dayMax] = getMaxBirthDate().split("-").map(Number);
+  const [yearMax, monthMax, dayMax] = getMaximumBirthDate()
+    .split("-")
+    .map(Number);
   const dateMax = new Date(yearMax, monthMax - 1, dayMax);
 
-  const [yearMin, monthMin, dayMin] = getMinBirthDate().split("-").map(Number);
+  const [yearMin, monthMin, dayMin] = getMinimumBirthDate()
+    .split("-")
+    .map(Number);
   const dateMin = new Date(yearMin, monthMin - 1, dayMin);
 
   if (date > dateMax) return "¡ Debe tener al menos 18 años !"; // Minimum age check

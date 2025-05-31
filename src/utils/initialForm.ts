@@ -1,4 +1,4 @@
-import { getMaxBirthDate } from "./birthDateRange";
+import { getMaximumBirthDate } from "./birthDateRange";
 import type { FormErrors, FormValues } from "./interfaces";
 
 /**
@@ -11,7 +11,7 @@ export const initialFormValues: FormValues = {
   gender: "0",
   nationality: "V",
   idNumber: "",
-  birthDate: getMaxBirthDate(),
+  birthDate: getMaximumBirthDate(),
   phonePrefix: "0412",
   phoneNumber: "",
   email: "",

@@ -7,7 +7,10 @@ import {
   nationalityOptions,
   phonePrefixOptions,
 } from "../utils/formOptions";
-import { getMinBirthDate, getMaxBirthDate } from "../utils/birthDateRange";
+import {
+  getMinimumBirthDate,
+  getMaximumBirthDate,
+} from "../utils/birthDateRange";
 import logo1 from "../assets/images/logo-1.webp";
 import logo2 from "../assets/images/logo-2.webp";
 import userInputIcon from "../assets/images/user-input-icon.webp";
@@ -135,8 +138,8 @@ export default function Form({
           {/* Date input with min/max */}
           <Input
             type="date"
-            min={getMinBirthDate()}
-            max={getMaxBirthDate()}
+            min={getMinimumBirthDate()}
+            max={getMaximumBirthDate()}
             id="birthDate"
             name="birthDate"
             label="Fecha de Nacimiento"

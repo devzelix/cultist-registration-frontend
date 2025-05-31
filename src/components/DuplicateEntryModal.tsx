@@ -27,7 +27,7 @@ export default function DuplicateEntryModal({
 
           {/* Informative message about the duplicate entry */}
           <p className="mt-1 pr-2 pl-2 font-inter font-normal text-tertiary text-sm text-center md:mt-3 md:p-0 md:text-lg xl:text-xl">
-            {`A record with the ${message} you entered already exists`}
+            {`Ya existe un registro con el ${message} que ingresaste`}
           </p>
 
           {/* Retry button, disabled based on isDisabled */}

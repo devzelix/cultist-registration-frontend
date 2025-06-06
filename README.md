@@ -1,6 +1,6 @@
-# 🎨 Cultor Registration Frontend
+# 🎨 Carabobo Cultors Information System Frontend
 
-Web application for registering cultors and artists in the Secretariat Of Culture Of Carabobo.  
+Web application for registering cultors in the Secretariat Of Culture Of Carabobo.  
 Built with React and TypeScript, using TailwindCSS for styling and custom validations for each form field.
 
 ## Table of Contents

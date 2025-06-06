@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
   const devProxyPath = env.VITE_API_URL;
 
   return {
-    base: "/",
+    base: "/cultores",
     plugins: [react(), tailwindcss()],
     server: {
       proxy:

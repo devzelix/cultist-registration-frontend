@@ -23,3 +23,16 @@
 ### 📝 Notes
 
 - This change **does not break external compatibility**, but if external code relied directly on specific function names, adjustments may be necessary.
+
+## [1.3.0] - 2025-06-06
+
+### ✨ Added
+
+- `VITE_API_BASE_URL` added to `.env.template` for clearer environment setup.
+
+### 🔧 Changed
+
+- Proxy configuration updated in `vite.config.ts` for improved API routing.
+- Base route in `BrowserRouter` updated in `App.tsx`.
+- Optional fields in the form now explicitly show “(optional)” in their labels.
+- Email field in the form is no longer required.

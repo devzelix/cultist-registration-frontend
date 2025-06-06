@@ -37,8 +37,8 @@ Built with React and TypeScript, using TailwindCSS for styling and custom valida
 1. Clone the repository
 
 ```bash
-git clone https://github.com/devzelix/cultor-registration-frontend.git
-cd cultor-registration-frontend
+git clone https://github.com/devzelix/sicuc-frontend.git
+cd sicuc-frontend
 ```
 
 2. Install dependencies

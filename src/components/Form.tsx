@@ -173,7 +173,7 @@ export default function Form({
             placeholder="Ej. mariaperez@email.com"
             id="email"
             name="email"
-            label="Correo Electrónico"
+            label="Correo Electrónico (opcional)"
             icon={emailInputIcon}
             error={formErrors.emailError}
             value={formValues.email}
@@ -187,7 +187,7 @@ export default function Form({
             placeholder="Ej. mariaartista"
             id="instagramUser"
             name="instagramUser"
-            label="Usuario de Instagram"
+            label="Usuario de Instagram (opcional)"
             icon={instagramInputIcon}
             error={formErrors.instagramUserError}
             value={formValues.instagramUser}
@@ -279,7 +279,7 @@ export default function Form({
             placeholder="Ej. Grupo Cultural El Alba"
             id="groupName"
             name="groupName"
-            label="Nombre de Agrupación"
+            label="Nombre de Agrupación (opcional)"
             icon={groupNameInputIcon}
             error={formErrors.groupNameError}
             value={formValues.groupName}

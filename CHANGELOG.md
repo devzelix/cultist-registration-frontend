@@ -36,3 +36,15 @@
 - Base route in `BrowserRouter` updated in `App.tsx`.
 - Optional fields in the form now explicitly show “(optional)” in their labels.
 - Email field in the form is no longer required.
+
+## [1.3.1] - 2025-06-06
+
+### 🔧 Changed
+
+- Update README.md
+
+## [1.4.0] - 2025-06-06
+
+### 🔧 Changed
+
+- modified base in `vite.config.ts`.

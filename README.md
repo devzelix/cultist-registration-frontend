@@ -57,7 +57,7 @@ npm run dev
 yarn dev
 ```
 
-4. Open your browser at http://localhost:5173 or the URL shown in the console.
+4. Open your browser at http://localhost:5173/cultores/registro or the URL shown in the console.
 
 ## 🎯 Usage
 

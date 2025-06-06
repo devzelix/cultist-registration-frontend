@@ -54,3 +54,9 @@
 ### 🔧 Changed
 
 - modified base in `vite.config.ts` to `/cultores`.
+
+## [1.6.0] - 2025-06-06
+
+### ✨ Added
+
+- Redirect /cultores to /cultores/registro.

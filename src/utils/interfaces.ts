@@ -26,6 +26,8 @@ export interface FormValues {
   homeAddress: string;
   artCategoryId: string;
   artDisciplineId: string;
+  isOtherDiscipline: boolean;
+  otherDiscipline: string;
   yearsOfExperience: string;
   groupName: string;
   hasDisability: string;
@@ -51,6 +53,7 @@ export interface FormErrors {
   homeAddressError: string;
   artCategoryIdError: string;
   artDisciplineIdError: string;
+  otherDisciplineError: string;
   yearsOfExperienceError: string;
   groupNameError: string;
   disabilityError: string;
@@ -75,6 +78,7 @@ export interface RequestBody {
   homeAddress: string;
   artCategoryId: number;
   artDisciplineId: number;
+  otherDiscipline: string;
   yearsOfExperience: number;
   groupName: string;
   disability: string;
@@ -99,6 +103,7 @@ export interface SuccessBody {
   homeAddress: string;
   artCategoryId: number;
   artDisciplineId: number;
+  otherDiscipline: string;
   yearsOfExperience: number;
   groupName: string;
   disability: string;

@@ -39,7 +39,7 @@ export default function validateFields<K extends keyof FormValues>(
     return validateSelect(key, value);
   if (key === "homeAddress") return validateHomeAddress(value);
   if (key === "yearsOfExperience") return validateYearsOfExperience(value);
-  if (key === "disability" || key === "illness" || key === "groupName")
+  if (key === "otherDiscipline" || key === "groupName" || key === "disability" || key === "illness")
     return validateDescriptionField(key, value);
 
   if (!value) return "¡ Campo Obligatorio !";

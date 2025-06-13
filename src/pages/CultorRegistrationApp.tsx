@@ -16,7 +16,7 @@ import useModal from "../hooks/useModal";
  */
 export default function CultorRegistrationApp() {
   useEffect(() => {
-    document.title = "Registro de Cultores - Secretaría de Cultura de Carabobo";
+    document.title = "Secretaría de Cultura de Carabobo - Registro de Cultores";
   }, []);
 
   // Custom hook to manage the state of the conflict modal

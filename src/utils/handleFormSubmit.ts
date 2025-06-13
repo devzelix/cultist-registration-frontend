@@ -63,6 +63,10 @@ export default async function handleFormSubmit<K extends keyof FormValues>(
       "artDisciplineId" as K,
       formValues.artDisciplineId
     ),
+    otherDisciplineError:
+      formValues.isOtherDiscipline
+        ? validateDescriptionField("otherDiscipline" as K, formValues.otherDiscipline)
+        : "",
     yearsOfExperienceError: validateYearsOfExperience(
       formValues.yearsOfExperience
     ),
@@ -125,6 +129,7 @@ export default async function handleFormSubmit<K extends keyof FormValues>(
       "homeAddressError",
       "artCategoryIdError",
       "artDisciplineIdError",
+      "otherDisciplineError",
       "yearsOfExperienceError",
       "groupNameError",
       "disabilityError",

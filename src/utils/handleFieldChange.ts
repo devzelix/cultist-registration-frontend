@@ -16,8 +16,48 @@ export default function handleFieldChange<K extends keyof FormValues>(
   setFormValues: Dispatch<SetStateAction<FormValues>>,
   setFormErrors: Dispatch<SetStateAction<FormErrors>>
 ) {
-  const { name, value } = e.target;
+  const field: HTMLInputElement | HTMLSelectElement = e.target;
+  const { name, value } = field;
   const key = name as K;
+
+  if (field instanceof HTMLSelectElement && name === "municipalityId") {
+    const parishIdError = "parishIdError" as keyof FormErrors;
+    if (formErrors[parishIdError] !== "") {
+      setFormErrors((prev) => ({
+        ...prev,
+        [parishIdError]: "",
+      }));
+    }
+  }
+
+  if (field instanceof HTMLSelectElement && (name === "artCategoryId" || name === "artDisciplineId")) {
+    const isOtherDiscipline = "isOtherDiscipline" as K;
+    const otherDiscipline = "otherDiscipline" as K;
+    let is = false;
+    if (name === "artDisciplineId" && field.options[field.selectedIndex].text === "Otra..."){
+      is = true;
+    }
+    setFormValues((prevState) => ({
+        ...prevState,
+        [isOtherDiscipline]: is,
+        [otherDiscipline]: "",
+    }));
+
+    const artDisciplineIdError = "artDisciplineIdError" as keyof FormErrors;
+    const otherDisciplineError = "otherDisciplineError" as keyof FormErrors;
+    if (formErrors[artDisciplineIdError] !== "") {
+      setFormErrors((prev) => ({
+        ...prev,
+        [artDisciplineIdError]: "",
+      }));
+    }
+    if (formErrors[otherDisciplineError] !== "") {
+      setFormErrors((prev) => ({
+        ...prev,
+        [otherDisciplineError]: "",
+      }));
+    }
+  }
 
   // Update the form value for the changed field.
   setFormValues((prevState) => ({

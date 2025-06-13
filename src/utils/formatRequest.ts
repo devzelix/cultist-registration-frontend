@@ -30,6 +30,7 @@ export default function formatRequest(formValues: FormValues): RequestBody {
     homeAddress: formatString(formValues.homeAddress),
     artCategoryId: Number(formValues.artCategoryId.trim()),
     artDisciplineId: Number(formValues.artDisciplineId.trim()),
+    otherDiscipline: formatString(formValues.otherDiscipline),
     yearsOfExperience: Number(formValues.yearsOfExperience.trim()),
     groupName: formatString(formValues.groupName),
     disability: formValues.disability.trim().toLowerCase(),

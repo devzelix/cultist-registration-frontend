@@ -19,6 +19,7 @@ import phoneInputIcon from "../assets/images/phone-input-icon.webp";
 import emailInputIcon from "../assets/images/email-input-icon.webp";
 import instagramInputIcon from "../assets/images/instagram-input-icon.webp";
 import homeAddressInputIcon from "../assets/images/home-address-input-icon.webp";
+import otherDisciplineIcon from "../assets/images/other-discipline-icon.webp";
 import groupNameInputIcon from "../assets/images/group-name-input-icon.webp";
 import disabilityTypeInputIcon from "../assets/images/disability-type-input-icon.webp";
 import illnessDetailsInputIcon from "../assets/images/illness-details-input-icon.webp";
@@ -106,13 +107,13 @@ export default function Form({
 
           {/* Select dropdowns */}
           <Select
-            id="gender"
-            name="gender"
+            idSelect="gender"
+            nameSelect="gender"
             label="Género"
             defaultOption="Seleccione su género..."
             options={genderOptions}
-            error={formErrors.genderError}
-            value={formValues.gender}
+            errorSelect={formErrors.genderError}
+            valueSelect={formValues.gender}
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -197,25 +198,25 @@ export default function Form({
 
           {/* Location select inputs */}
           <Select
-            id="municipalityId"
-            name="municipalityId"
+            idSelect="municipalityId"
+            nameSelect="municipalityId"
             label="Municipio de Residencia"
             defaultOption="Seleccione su municipio..."
             options={municipalitiesOptions}
-            error={formErrors.municipalityIdError}
-            value={formValues.municipalityId}
+            errorSelect={formErrors.municipalityIdError}
+            valueSelect={formValues.municipalityId}
             onChange={handleChange}
             onBlur={handleBlur}
           />
           <Select
-            id="parishId"
-            name="parishId"
+            idSelect="parishId"
+            nameSelect="parishId"
             label="Parroquia"
             defaultOption="Seleccione su parroquia..."
             options={availableParishes}
             disabled={availableParishes.length === 0}
-            error={formErrors.parishIdError}
-            value={formValues.parishId}
+            errorSelect={formErrors.parishIdError}
+            valueSelect={formValues.parishId}
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -236,25 +237,32 @@ export default function Form({
 
           {/* Art category and discipline selects */}
           <Select
-            id="artCategoryId"
-            name="artCategoryId"
+            idSelect="artCategoryId"
+            nameSelect="artCategoryId"
             label="Cartegoría Artística"
             defaultOption="Seleccione su categoría..."
             options={artCategoriesOptions}
-            error={formErrors.artCategoryIdError}
-            value={formValues.artCategoryId}
+            errorSelect={formErrors.artCategoryIdError}
+            valueSelect={formValues.artCategoryId}
             onChange={handleChange}
             onBlur={handleBlur}
           />
           <Select
-            id="artDisciplineId"
-            name="artDisciplineId"
+            idSelect="artDisciplineId"
+            nameSelect="artDisciplineId"
+            idInput="otherDiscipline"
+            nameInput="otherDiscipline"
             label="Disciplina Artística"
+            placeholder="Ej. Manualidades"
             defaultOption="Seleccione su disciplina..."
             options={availableArtDisciplines}
+            icon={otherDisciplineIcon}
             disabled={availableArtDisciplines.length === 0}
-            error={formErrors.artDisciplineIdError}
-            value={formValues.artDisciplineId}
+            isOther={formValues.isOtherDiscipline}
+            errorSelect={formErrors.artDisciplineIdError}
+            errorInput={formErrors.otherDisciplineError}
+            valueSelect={formValues.artDisciplineId}
+            valueInput={formValues.otherDiscipline}
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -279,7 +287,7 @@ export default function Form({
             placeholder="Ej. Grupo Cultural El Alba"
             id="groupName"
             name="groupName"
-            label="Nombre de Agrupación (opcional)"
+            label="Agrupación (opcional)"
             icon={groupNameInputIcon}
             error={formErrors.groupNameError}
             value={formValues.groupName}
